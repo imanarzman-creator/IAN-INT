@@ -1,5 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
+
+// Internal component for the animated number
+const HeroCounter = () => {
+  const [count, setCount] = useState(500);
+  
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+    const duration = 2500; // 2.5 seconds
+    const startValue = 500;
+    const endValue = 589;
+
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      
+      // Ease out expo for a premium feel
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      
+      setCount(Math.floor(startValue + (endValue - startValue) * ease));
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  }, []);
+
+  return <span className="tabular-nums">{count}+</span>;
+};
 
 export const Hero: React.FC = () => {
   const phoneNumber = '601155515608';
@@ -77,7 +107,7 @@ export const Hero: React.FC = () => {
               </div>
               <div className="flex flex-col justify-center">
                  <div className="flex items-center gap-1">
-                    <span className="text-white font-bold text-lg">500+</span>
+                    <span className="text-white font-bold text-lg"><HeroCounter /></span>
                     <span className="text-brand-gold text-xs font-mono uppercase tracking-wide">Professionals</span>
                  </div>
                  <p className="text-brand-text-muted text-xs leading-none">secured jobs this year.</p>

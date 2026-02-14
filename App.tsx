@@ -7,6 +7,8 @@ import { About } from './components/About';
 import { AICoach } from './components/AICoach';
 import { Services } from './components/Services';
 import { Testimonials } from './components/Testimonials';
+import { BookLeadMagnet } from './components/BookLeadMagnet';
+import { CorporateTraining } from './components/CorporateTraining';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { LiveActivity } from './components/LiveActivity';
@@ -28,6 +30,7 @@ export const App: React.FC = () => {
         <AICoach />
         <Services />
         <Testimonials />
+        <BookLeadMagnet />
         
         {/* Final CTA Section - Authority Driven */}
         <section className="py-32 px-6 text-center border-t border-white/5 bg-brand-navy relative overflow-hidden">
@@ -45,6 +48,8 @@ export const App: React.FC = () => {
              </button>
           </div>
         </section>
+
+        <CorporateTraining />
       </main>
       <Footer />
       <WhatsAppButton />
