@@ -1,11 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
 const activities = [
-  { text: "Someone from Kuala Lumpur just purchased Bedah Resume", time: "2 mins ago", type: "purchase" },
+  { text: "Ahmad F. from Johor just purchased Bedah Resume", time: "2 mins ago", type: "purchase" },
   { text: "5 people are currently viewing Circle 100 slots", time: "Live", type: "view" },
   { text: "New Mock Interview slot booked by Sarah T.", time: "Just now", type: "booking" },
-  { text: "Someone from Penang joined the Waitlist", time: "5 mins ago", type: "signup" },
-  { text: "High demand: Only 3 Strategy Calls left this week", time: "Alert", type: "alert" }
+  { text: "Wei Lin from Subang joined the Waitlist", time: "5 mins ago", type: "signup" },
+  { text: "High demand: Only 3 Strategy Calls left this week", time: "Alert", type: "alert" },
+  { text: "Ravindran from Ipoh purchased Career Roadmap", time: "10 mins ago", type: "purchase" },
+  { text: "Someone from Singapore is viewing Mock Interview Details", time: "Live", type: "view" },
+  { text: "Nurul I. from Shah Alam booked a Strategy Call", time: "1 min ago", type: "booking" },
+  { text: "Jason K. from PJ just secured a Circle 100 seat", time: "Just now", type: "purchase" },
+  { text: "Fatimah from Bangi pre-ordered 'JANGAN MINTA KERJA'", time: "15 mins ago", type: "purchase" },
+  { text: "12 people are reading Client Testimonials right now", time: "Live", type: "view" },
+  { text: "Someone from Kuching booked a Resume Review session", time: "8 mins ago", type: "booking" },
+  { text: "Kamal from Cyberjaya joined the Circle 100 waitlist", time: "Just now", type: "signup" },
+  { text: "Michelle Y. from KL Sentral purchased Mock Interview", time: "20 mins ago", type: "purchase" },
+  { text: "Alert: Mock Interview slots for Saturday are filling up fast", time: "Alert", type: "alert" },
+  { text: "Someone from London is viewing Career Strategy Services", time: "Live", type: "view" },
+  { text: "Hafiz from Putrajaya booked an Urgent Consultation", time: "5 mins ago", type: "booking" },
+  { text: "Priya from Klang just upgraded to the Premium Plan", time: "30 mins ago", type: "purchase" },
+  { text: "Daniel L. from Melbourne is viewing your profile", time: "Live", type: "view" },
+  { text: "Siti from Kota Bharu downloaded the Salary Guide", time: "12 mins ago", type: "signup" },
+  { text: "New 5-Star Review received from Azlan M.", time: "Just now", type: "alert" },
+  { text: "Kenneth from Damansara purchased Bedah Resume Express", time: "4 mins ago", type: "purchase" }
 ];
 
 export const LiveActivity: React.FC = () => {
@@ -22,7 +39,7 @@ export const LiveActivity: React.FC = () => {
         setCurrentIndex((prev) => (prev + 1) % activities.length);
         setIsVisible(true);
       }, 500); // Wait for fade out before changing text and fading in
-    }, 8000); // Change every 8 seconds
+    }, 6000); // Change every 6 seconds for slightly faster rotation given the larger list
 
     return () => {
       clearTimeout(initialTimeout);
@@ -40,12 +57,12 @@ export const LiveActivity: React.FC = () => {
     >
       <div className="bg-brand-navy-light/90 backdrop-blur-md border border-brand-gold/30 p-3 rounded-lg shadow-2xl flex items-center gap-3 max-w-xs md:max-w-sm">
         <div className="relative shrink-0">
-          <div className="w-10 h-10 rounded-full bg-brand-navy border border-white/10 flex items-center justify-center overflow-hidden">
-             {currentActivity.type === 'purchase' && <span className="text-lg">💰</span>}
-             {currentActivity.type === 'view' && <span className="text-lg">👀</span>}
-             {currentActivity.type === 'booking' && <span className="text-lg">📅</span>}
-             {currentActivity.type === 'signup' && <span className="text-lg">📝</span>}
-             {currentActivity.type === 'alert' && <span className="text-lg">🔥</span>}
+          <div className="w-10 h-10 rounded-full bg-brand-navy border border-white/10 flex items-center justify-center overflow-hidden text-lg">
+             {currentActivity.type === 'purchase' && <span>💰</span>}
+             {currentActivity.type === 'view' && <span>👀</span>}
+             {currentActivity.type === 'booking' && <span>📅</span>}
+             {currentActivity.type === 'signup' && <span>📝</span>}
+             {currentActivity.type === 'alert' && <span>🔥</span>}
           </div>
           <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-brand-navy-light animate-pulse"></div>
         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // Interactive Counter Component
 const AnimatedCounter = () => {
-  const [count, setCount] = useState(500);
+  const [count, setCount] = useState(501);
   const ref = useRef<HTMLSpanElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -26,29 +26,42 @@ const AnimatedCounter = () => {
   useEffect(() => {
     if (!isVisible) return;
 
-    const end = 589;
-    const start = 500;
-    const duration = 2500;
-    let startTime: number;
+    const min = 501;
+    const max = 597;
+    const duration = 3000; // Duration for one direction sweep (3 seconds)
+    let startTime: number | null = null;
+    let direction = 1; // 1 for up, -1 for down
 
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
       
-      // Easing: easeOutExpo for smooth deceleration
-      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      
-      setCount(Math.floor(start + (end - start) * ease));
+      // Smooth sine easing for natural turnaround
+      const ease = -(Math.cos(Math.PI * progress) - 1) / 2; 
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
+      if (direction === 1) {
+        // Counting Up
+        setCount(Math.floor(min + (max - min) * ease));
+      } else {
+        // Counting Down
+        setCount(Math.floor(max - (max - min) * ease));
       }
+
+      // When animation cycle completes, reverse direction and reset timer
+      if (progress >= 1) {
+        startTime = timestamp;
+        direction *= -1;
+      }
+      
+      requestAnimationFrame(animate);
     };
 
-    requestAnimationFrame(animate);
+    const animationId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId);
   }, [isVisible]);
 
-  return <span ref={ref} className="tabular-nums inline-block">{count}</span>;
+  return <span ref={ref} className="tabular-nums inline-block min-w-[3ch] text-center">{count}</span>;
 };
 
 const credentials = [
@@ -69,7 +82,7 @@ const credentials = [
     icon: "💼" 
   },
   { 
-    label: <><AnimatedCounter />+ Clients</>, 
+    label: <><AnimatedCounter /> Clients</>, 
     sub: "Successful Placements", 
     icon: "🚀" 
   }
@@ -120,7 +133,7 @@ export const TrustBar: React.FC = () => {
                       {item.label} <span className="inline-block text-[10px] align-top text-brand-gold ml-1">↗</span>
                     </a>
                  ) : (
-                    <h4 className="text-white font-bold text-base leading-tight group-hover:text-brand-gold transition-colors">{item.label}</h4>
+                    <h4 className="text-white font-bold text-base leading-tight group-hover:text-brand-gold transition-colors flex items-center gap-1">{item.label}</h4>
                  )}
                  <p className="text-brand-text-muted text-[10px] uppercase tracking-wider font-mono mt-1">{item.sub}</p>
               </div>
