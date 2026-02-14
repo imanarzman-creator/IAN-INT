@@ -1,123 +1,157 @@
 import React from 'react';
-import { Service } from '../types';
-
-const services: Service[] = [
-  {
-    id: '01',
-    title: "Executive Strategy",
-    description: "High-level roadmap planning for C-Suite transitions. We analyze market trends to position your personal brand effectively.",
-    price: "RM 1,200",
-    icon: "♟️"
-  },
-  {
-    id: '02',
-    title: "Resume Optimization",
-    description: "Hand-crafted narrative optimization that resonates with human decision-makers, ensuring your story cuts through the noise.",
-    price: "RM 450",
-    icon: "✍️"
-  },
-  {
-    id: '03',
-    title: "Interview Simulation",
-    description: "Mock scenarios with real-time feedback on tone, pacing, and content quality, tailored to your target industry.",
-    price: "RM 350",
-    icon: "🎙️"
-  },
-  {
-    id: '04',
-    title: "Negotiation Tactics",
-    description: "Data-backed compensation frameworks to ensure you are paid according to your true market value.",
-    price: "RM 500",
-    icon: "⚖️"
-  }
-];
+import { Button } from './Button';
 
 export const Services: React.FC = () => {
+  const openForm = () => window.open('https://forms.gle/7mHDrHwQKd23AxUg8', '_blank');
+
   return (
-    <section id="services" className="bg-brand-black border-b border-white/10">
-      <div className="container mx-auto px-6 py-24">
+    <section id="services" className="bg-brand-navy py-24 border-b border-white/5 scroll-mt-20">
+      <div className="container mx-auto px-6">
+        
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-serif mb-6 text-white">The Methodology</h2>
-            <p className="text-brand-text-muted text-lg leading-relaxed">
-              Precision-engineered services designed to dismantle barriers and accelerate your professional ascent.
-            </p>
-          </div>
-          <div className="hidden md:flex flex-col items-end gap-2">
-            <span className="text-xs font-mono uppercase text-brand-text-muted tracking-widest">Service Catalog</span>
-            <div className="h-px w-32 bg-brand-accent/50"></div>
-          </div>
+        <div className="max-w-3xl mb-16">
+          <h2 className="text-sm font-mono text-brand-gold uppercase tracking-[0.3em] mb-4">The Ecosystem</h2>
+          <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Master the Game of Employment</h3>
+          <p className="text-brand-text-muted text-lg">
+            Whether you need a tactical fix, a strategic overhaul, or a community of winners. Choose your weapon.
+          </p>
         </div>
 
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
+        {/* HIGH END 1-on-1 SERVICES GRID */}
+        <div className="mb-8">
+            <h4 className="text-white font-bold text-xl mb-6 flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
+                Premium 1-on-1 Consultation
+            </h4>
+            <div className="grid lg:grid-cols-3 gap-6">
             
-            {/* Featured Promo Block */}
-            <div className="md:col-span-2 lg:col-span-2 border-r border-b border-white/10 p-8 md:p-14 bg-gradient-to-br from-white/5 to-transparent relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity duration-700">
-                    <svg width="200" height="200" viewBox="0 0 100 100" className="text-white fill-current">
-                        <path d="M50 0 L100 50 L50 100 L0 50 Z" />
-                    </svg>
+                {/* 1. Bedah Resume */}
+                <div className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all group flex flex-col">
+                    <div className="mb-6">
+                        <span className="text-3xl">📄</span>
+                        <h5 className="text-xl font-serif font-bold text-white mt-4">Bedah Resume</h5>
+                        <p className="text-xs font-mono text-brand-gold mt-1 uppercase tracking-wider">The Foundation</p>
+                    </div>
+                    <p className="text-brand-text-muted text-sm leading-relaxed mb-8 flex-1">
+                        A surgical review of your resume. We identify gaps, optimize for ATS systems, and rewrite your narrative to hook recruiters in 6 seconds.
+                    </p>
+                    <div className="pt-6 border-t border-white/5">
+                        <div className="flex justify-between items-center mb-4">
+                            <span className="text-white font-bold">RM 450</span>
+                            <span className="text-[10px] bg-white/10 px-2 py-1 rounded text-white/60">Per Session</span>
+                        </div>
+                        <Button variant="outline" fullWidth onClick={openForm} className="text-xs">Book Review</Button>
+                    </div>
                 </div>
-                
-                <div className="relative z-10 flex flex-col h-full justify-between gap-10">
-                    <div>
-                        <span className="inline-block px-3 py-1 bg-brand-accent text-brand-black font-bold text-[10px] font-mono tracking-[0.2em] uppercase mb-6">
-                            Limited Availability
-                        </span>
-                        <h3 className="text-3xl md:text-5xl font-serif text-white mb-6">
-                            All-Access Membership
-                        </h3>
-                        <p className="text-brand-text-muted max-w-lg mb-8 text-lg">
-                            Gain exclusive 30-day access to our complete suite of executive tools. 
-                            Unlock Strategy, Resume Optimization, Interview Prep, and Negotiation tactics.
-                        </p>
-                        <div className="flex flex-wrap items-center gap-6 text-sm font-mono">
-                            <span className="text-brand-accent text-lg">RM 59 / 30 DAYS</span>
-                            <span className="w-px h-4 bg-white/20"></span>
-                            <span className="line-through text-white/30">RM 2,500 VALUE</span>
+
+                {/* 2. Mock Interview (New) */}
+                <div className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all group flex flex-col relative overflow-hidden">
+                    <div className="mb-6 relative z-10">
+                        <span className="text-3xl">🎙️</span>
+                        <h5 className="text-xl font-serif font-bold text-white mt-4">Mock Interview</h5>
+                        <p className="text-xs font-mono text-brand-gold mt-1 uppercase tracking-wider">The Simulation</p>
+                    </div>
+                    <p className="text-brand-text-muted text-sm leading-relaxed mb-8 flex-1">
+                        Step into the "War Room". A high-pressure simulation of your upcoming interview. We refine your body language, tone, and strategic answers.
+                    </p>
+                    <div className="pt-6 border-t border-white/5 relative z-10">
+                        <div className="flex justify-between items-center mb-4">
+                            <span className="text-white font-bold">RM 350</span>
+                            <span className="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-1 rounded font-bold uppercase tracking-wide animate-pulse">High Demand</span>
+                        </div>
+                        <Button variant="outline" fullWidth onClick={openForm} className="text-xs">Enter War Room</Button>
+                    </div>
+                </div>
+
+                {/* 3. Career Roadmap (New) */}
+                <div className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all group flex flex-col">
+                    <div className="mb-6">
+                        <span className="text-3xl">🗺️</span>
+                        <h5 className="text-xl font-serif font-bold text-white mt-4">Career Roadmap</h5>
+                        <p className="text-xs font-mono text-brand-gold mt-1 uppercase tracking-wider">The Long Game</p>
+                    </div>
+                    <p className="text-brand-text-muted text-sm leading-relaxed mb-8 flex-1">
+                        Stop guessing. We build a 3-5 year execution plan for your promotion, salary negotiation, and industry pivot. Includes salary benchmarking.
+                    </p>
+                    <div className="pt-6 border-t border-white/5">
+                        <div className="flex justify-between items-center mb-4">
+                            <span className="text-white font-bold">RM 550</span>
+                            <span className="text-[10px] bg-white/10 px-2 py-1 rounded text-white/60">Comprehensive</span>
+                        </div>
+                        <Button variant="outline" fullWidth onClick={openForm} className="text-xs">Build Roadmap</Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {/* CIRCLE 100 - THE NO BRAINER OFFER */}
+        <div className="grid lg:grid-cols-12 gap-8 mb-8">
+            <div className="lg:col-span-8">
+                <div className="bg-gradient-to-br from-brand-gold/10 to-brand-navy border border-brand-gold/50 rounded-2xl p-8 md:p-12 relative overflow-hidden group shadow-[0_0_50px_rgba(251,191,36,0.1)]">
+                    {/* Background Glint */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold blur-[100px] opacity-20 pointer-events-none"></div>
+                    
+                    <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                        <div className="flex-1">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="bg-brand-gold text-brand-navy text-[10px] font-bold uppercase tracking-[0.2em] px-2 py-1 rounded-sm">Best Value</span>
+                                <span className="text-red-400 text-[10px] font-bold uppercase tracking-[0.2em] animate-pulse">87% Spots Taken</span>
+                            </div>
+                            <h4 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
+                                Circle 100 <span className="text-brand-gold font-light italic">Access</span>
+                            </h4>
+                            <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
+                                Can't commit to 1-on-1 yet? Get the <strong>blueprint for all three</strong>. Join the inner circle and access the methodologies for Resume, Interview, and Career Strategy in one place.
+                            </p>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-xs font-mono text-brand-gold/90 mb-8">
+                                <li className="flex items-center gap-2">✓ Resume Structures</li>
+                                <li className="flex items-center gap-2">✓ Interview Scripts</li>
+                                <li className="flex items-center gap-2">✓ Roadmap Templates</li>
+                                <li className="flex items-center gap-2">✓ Weekly Group Q&A</li>
+                            </ul>
+                            <div className="flex items-center gap-4">
+                                <Button onClick={openForm} className="shadow-brand-gold/20 shadow-lg px-8">
+                                    Join Now • RM 59
+                                </Button>
+                                <span className="text-xs text-brand-text-muted">for 30 days access</span>
+                            </div>
+                        </div>
+                        
+                        {/* Visual for Bundle */}
+                        <div className="w-full md:w-1/3 bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-white/10 text-center">
+                            <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">Total Value RM 1350+</p>
+                            <div className="text-4xl font-bold text-white mb-1">RM 59</div>
+                            <div className="text-xs text-brand-gold mb-4">Limited Time Offer</div>
+                            <div className="space-y-2 text-left">
+                                <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                                    <div className="h-full bg-red-500 w-[87%]"></div>
+                                </div>
+                                <p className="text-[9px] text-right text-white/50">Batch closing soon</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <button 
-                       onClick={() => window.open('https://forms.gle/7mHDrHwQKd23AxUg8', '_blank')}
-                       className="w-full sm:w-auto bg-white text-black px-8 py-4 font-medium hover:bg-brand-accent transition-all duration-300 flex items-center justify-between sm:justify-center gap-6 group/btn"
-                    >
-                       <span className="uppercase tracking-widest text-xs font-bold">Claim Access</span>
-                       <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
-                    </button>
                 </div>
             </div>
 
-            {/* Standard Service Cards */}
-            {services.map((service) => (
-                <div key={service.id} className="border-r border-b border-white/10 p-10 hover:bg-white/[0.02] transition-colors duration-300 flex flex-col justify-between group min-h-[320px]">
-                    <div>
-                        <div className="flex justify-between items-start mb-8">
-                            <span className="text-4xl opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">{service.icon}</span>
-                            <span className="font-mono text-xs text-white/20 group-hover:text-brand-accent transition-colors">{service.id}</span>
-                        </div>
-                        <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-brand-accent transition-colors">{service.title}</h3>
-                        <p className="text-sm text-brand-text-muted leading-relaxed">
-                            {service.description}
+            {/* EBOOK - LEAD GEN */}
+            <div className="lg:col-span-4">
+                <div id="ebook" className="bg-brand-navy-light h-full p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all flex flex-col justify-center relative overflow-hidden">
+                    <div className="relative z-10">
+                        <span className="text-4xl mb-6 block">📖</span>
+                        <h4 className="text-2xl font-serif font-bold text-white mb-2">"JANGAN MINTA KERJA"</h4>
+                        <p className="text-brand-text-muted text-xs leading-relaxed mb-6">
+                            The upcoming manifesto on becoming "hunted" by recruiters. The strategies that didn't make it to the blog.
                         </p>
-                    </div>
-                    <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center opacity-60 group-hover:opacity-100 transition-opacity">
-                        <span className="text-[10px] font-mono text-white/50 uppercase tracking-widest">Investment</span>
-                        <span className="font-serif text-lg text-white">{service.price}</span>
+                        <div className="space-y-3">
+                            <input type="email" placeholder="Email Address" className="w-full bg-brand-navy border border-white/10 p-3 rounded-lg text-xs text-white focus:border-brand-gold outline-none" />
+                            <button className="w-full bg-white text-brand-navy font-bold py-3 rounded-lg hover:bg-brand-gold transition-colors text-xs uppercase tracking-widest">Join Waitlist</button>
+                        </div>
+                        <p className="text-[10px] text-brand-text-muted mt-6 italic text-center opacity-50">Expected Launch: March 2026</p>
                     </div>
                 </div>
-            ))}
-
-             {/* Quote Filler Block */}
-             <div className="hidden lg:flex border-r border-b border-white/10 p-10 items-center justify-center bg-brand-gray/20">
-                <blockquote className="text-center">
-                   <p className="font-serif text-xl text-white/60 italic mb-4">"The only way to predict the future is to create it."</p>
-                   <footer className="text-xs font-mono text-brand-accent uppercase tracking-widest">— Peter Drucker</footer>
-                </blockquote>
-             </div>
+            </div>
         </div>
+
       </div>
     </section>
   );

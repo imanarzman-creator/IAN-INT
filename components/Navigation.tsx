@@ -19,9 +19,9 @@ export const Navigation: React.FC = () => {
   };
 
   const navLinks = [
-    { name: 'Methodology', href: '#services' },
-    { name: 'AI Coach', href: '#ai-coach' },
-    { name: 'Success Stories', href: '#testimonials' },
+    { name: 'Strategy', href: '#services' },
+    { name: 'Consult IAN', href: '#ai-coach' },
+    { name: 'Reviews', href: '#testimonials' },
   ];
 
   return (
@@ -29,42 +29,40 @@ export const Navigation: React.FC = () => {
       <nav 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
           isScrolled 
-            ? 'bg-brand-black/90 backdrop-blur-md border-white/10 py-4' 
+            ? 'bg-brand-navy/95 backdrop-blur-md border-white/10 py-4 shadow-lg' 
             : 'bg-transparent border-transparent py-6'
         }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
-          <a href="#" className="text-2xl font-serif font-bold text-white tracking-tight flex items-center gap-2 group">
-            <div className="w-3 h-3 bg-brand-accent rounded-sm rotate-45 group-hover:rotate-90 transition-transform duration-500"></div>
-            IAN<span className="font-light text-white/50">INTELLIGENCE</span>
+          <a href="#" className="flex flex-col group">
+            <span className="text-xl font-serif font-bold text-white tracking-tight leading-none">IMAN ARZMAN</span>
+            <span className="text-[10px] font-mono font-bold text-brand-gold tracking-[0.3em] uppercase opacity-80">HR Consultant</span>
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a 
                 key={link.name}
                 href={link.href} 
-                className="text-sm font-medium text-white/70 hover:text-brand-accent transition-colors tracking-wide uppercase font-mono"
+                className="text-[11px] font-bold text-white/70 hover:text-brand-gold transition-colors tracking-widest uppercase font-sans"
               >
                 {link.name}
               </a>
             ))}
             <Button 
-              variant="outline" 
-              className="px-6 py-2 text-xs uppercase tracking-widest hover:bg-brand-accent hover:text-brand-black" 
+              className="bg-brand-gold text-brand-navy px-6 py-2 text-[10px] font-bold uppercase tracking-widest hover:bg-white" 
               onClick={handleStrategyCall}
             >
-              Book Strategy Call
+              Book Now
             </Button>
           </div>
 
           {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-white p-2 hover:text-brand-accent transition-colors z-50 relative"
+            className="md:hidden text-white p-2 hover:text-brand-gold transition-colors z-50 relative"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
           >
             <div className="w-6 flex flex-col items-end gap-1.5">
               <span className={`h-px bg-current transition-all duration-300 ${mobileMenuOpen ? 'w-6 rotate-45 translate-y-2' : 'w-6'}`}></span>
@@ -77,7 +75,7 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 bg-brand-black z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col justify-center items-center gap-8 ${
+        className={`fixed inset-0 bg-brand-navy z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col justify-center items-center gap-8 ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -86,13 +84,12 @@ export const Navigation: React.FC = () => {
             key={link.name}
             href={link.href} 
             onClick={() => setMobileMenuOpen(false)} 
-            className="text-2xl font-serif text-white hover:text-brand-accent transition-colors"
+            className="text-2xl font-serif text-white hover:text-brand-gold transition-colors"
           >
             {link.name}
           </a>
         ))}
-        <div className="h-px w-12 bg-white/10 my-4"></div>
-        <Button onClick={handleStrategyCall} className="min-w-[200px]">Book Strategy Call</Button>
+        <Button onClick={handleStrategyCall} className="min-w-[200px] bg-brand-gold text-brand-navy font-bold">Book Strategy Call</Button>
       </div>
     </>
   );

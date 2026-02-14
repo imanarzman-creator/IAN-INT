@@ -10,7 +10,7 @@ const testimonials: Testimonial[] = [
     role: "Verified Client",
     company: "Google Review",
     quote: "Highly recommended! He is straightforward, honest, and extremely helpful. He gives clear feedback without sugarcoating, which is exactly what I needed.",
-    image: "https://ui-avatars.com/api/?name=Nur+Ain+Andie&background=1a1a1a&color=fff&size=150"
+    image: "https://ui-avatars.com/api/?name=Nur+Ain+Andie&background=fbbf24&color=0f172a&size=150"
   },
   {
     id: '2',
@@ -18,7 +18,7 @@ const testimonials: Testimonial[] = [
     role: "Verified Client",
     company: "Google Review",
     quote: "The brutal truth that I longed to receive after being stuck for a while. Highly recommended for those looking to engage a professional who doesn't sugarcoat.",
-    image: "https://ui-avatars.com/api/?name=fnd+yusup&background=1a1a1a&color=fff&size=150"
+    image: "https://ui-avatars.com/api/?name=fnd+yusup&background=fbbf24&color=0f172a&size=150"
   },
   {
     id: '3',
@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
     role: "Verified Client",
     company: "Google Review",
     quote: "Received feedback immediately about my resume — truly eye-opening. The way he distinguishes between task-based vs impact-based is very clear & practical.",
-    image: "https://ui-avatars.com/api/?name=Miss+PinkY&background=1a1a1a&color=fff&size=150"
+    image: "https://ui-avatars.com/api/?name=Miss+PinkY&background=fbbf24&color=0f172a&size=150"
   }
 ];
 
@@ -41,43 +41,43 @@ const GoogleLogo = () => (
 
 export const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="bg-brand-black text-white">
+    <section id="testimonials" className="bg-brand-navy border-b border-white/5">
       <div className="container mx-auto px-6 py-24">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
           <div>
-             <div className="flex items-center gap-2 mb-4 text-brand-text-muted">
+             <div className="flex items-center gap-2 mb-4 text-brand-text-muted bg-white/5 w-fit px-3 py-1 rounded-full border border-white/10">
                  <GoogleLogo />
-                 <span className="text-sm font-mono uppercase tracking-wider">Verified Reviews</span>
+                 <span className="text-xs font-mono uppercase tracking-wider font-bold">Verified Reviews</span>
              </div>
-             <h2 className="text-4xl md:text-5xl font-serif">Client Success</h2>
+             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">Client Success</h2>
           </div>
           <a 
             href={GOOGLE_REVIEW_LINK} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group flex items-center gap-2 text-brand-text-muted hover:text-white transition-colors"
+            className="group flex items-center gap-2 text-brand-text-muted hover:text-brand-gold transition-colors text-sm font-mono tracking-widest uppercase"
           >
-            <span className="border-b border-transparent group-hover:border-brand-accent pb-0.5">Read all reviews</span>
+            <span className="border-b border-transparent group-hover:border-brand-gold pb-0.5">Read all reviews</span>
             <span>→</span>
           </a>
         </div>
 
-        <div className="border-t border-l border-white/10 grid grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t) => (
-            <div key={t.id} className="border-r border-b border-white/10 p-10 hover:bg-white/5 transition-all duration-300 flex flex-col group h-full">
+            <div key={t.id} className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 hover:shadow-lg transition-all duration-300 flex flex-col group h-full">
               <div className="mb-8 flex-1">
-                <div className="flex gap-1 mb-6 opacity-40 group-hover:opacity-100 transition-opacity">
+                <div className="flex gap-1 mb-6 opacity-60 group-hover:opacity-100 transition-opacity">
                     {[1,2,3,4,5].map(i => (
-                        <svg key={i} className="w-3 h-3 text-brand-accent fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                        <svg key={i} className="w-4 h-4 text-brand-gold fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
                     ))}
                 </div>
-                <p className="text-lg font-serif italic text-white/90 leading-relaxed">
+                <p className="text-base text-white/80 leading-relaxed font-light">
                   "{t.quote}"
                 </p>
               </div>
               
               <div className="flex items-center gap-4 pt-6 border-t border-white/5">
-                 <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full grayscale group-hover:grayscale-0 transition-all border border-white/10" />
+                 <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full border border-white/10" />
                  <div>
                     <h4 className="font-bold text-sm text-white">{t.name}</h4>
                     <p className="text-[10px] text-brand-text-muted font-mono uppercase tracking-wider">{t.company}</p>

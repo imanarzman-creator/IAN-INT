@@ -3,83 +3,85 @@ import { Button } from './Button';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 bg-brand-black border-b border-white/10 overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0 select-none pointer-events-none">
-        <img 
-          src="https://photos.fife.usercontent.google.com/pw/AP1GczPTDYe7thZXulxGsKd6jq0VIPFexSPbLlQSLlPoFNutBM0bvi23WB8w=w687-h897-s-no-gm?authuser=0" 
-          alt="Iman Arzman Background" 
-          className="w-full h-full object-cover opacity-[0.08] grayscale scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/95 to-brand-black"></div>
+    <section className="relative min-h-screen flex items-center pt-28 pb-12 lg:pt-24 bg-brand-navy overflow-hidden">
+      {/* Subtle Textural Background */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,#1e293b_0%,transparent_70%)]"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center min-h-[80vh]">
-        {/* Text Content */}
-        <div className="lg:col-span-7 space-y-10 py-12">
-          <div className="inline-flex items-center gap-3 px-3 py-1 border border-white/10 bg-white/5 backdrop-blur-md rounded-full text-xs font-mono tracking-widest uppercase text-brand-text-muted">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse"></span>
-            Executive Coaching by Iman Arzman
-          </div>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-[0.9] text-white tracking-tight">
-            Lead with <br />
-            <span className="text-brand-accent italic pr-4">Intelligence.</span>
-          </h1>
-          
-          <p className="text-xl text-brand-text-muted max-w-lg leading-relaxed border-l-2 border-brand-accent/30 pl-6">
-            Led by Iman Arzman, IAN Intelligence combines elite human strategy with predictive AI to navigate your career through the complexities of the modern workforce.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-5 pt-4">
-            <Button 
-              onClick={() => window.open('https://forms.gle/7mHDrHwQKd23AxUg8', '_blank')}
-              className="bg-brand-accent text-brand-black hover:bg-white border-0 shadow-[0_0_20px_rgba(212,179,127,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
-            >
-              Book Strategy Call
-            </Button>
-            <Button 
-              variant="outline" 
-              onClick={() => document.getElementById('ai-coach')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-white/20 hover:border-brand-accent"
-            >
-              Consult IAN
-            </Button>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pt-12 border-t border-white/5">
-            <div>
-              <span className="block text-4xl text-white font-serif mb-1">500+</span>
-              <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-widest">Executives Placed</span>
+          {/* Copy Side */}
+          <div className="lg:col-span-7 space-y-8 animate-fade-in order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-gold/10 border border-brand-gold/20 rounded-lg">
+              <span className="text-brand-gold font-mono text-xs font-bold uppercase tracking-widest">15+ Years HR Experience • PHRi Certified</span>
             </div>
-            <div>
-              <span className="block text-4xl text-white font-serif mb-1">94%</span>
-              <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-widest">Salary Increase</span>
+            
+            <h1 className="text-5xl md:text-7xl font-serif font-bold leading-tight text-white">
+              Stop Getting Rejected. <br />
+              <span className="text-brand-gold italic">Get Hired.</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-brand-text-muted max-w-xl leading-relaxed">
+              I've spent 15 years inside the interview room making hiring decisions. Now, I'm giving you the <span className="text-white font-semibold">Insider's Playbook</span> to navigate the Malaysian job market and land the salary you deserve.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Button 
+                onClick={() => window.open('https://forms.gle/7mHDrHwQKd23AxUg8', '_blank')}
+                className="px-8 py-4 text-base"
+              >
+                Book Bedah Resume
+              </Button>
+              <Button 
+                variant="outline"
+                onClick={() => document.getElementById('ebook')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-8 py-4 text-base"
+              >
+                Join E-Book Waitlist
+              </Button>
             </div>
-          </div>
-        </div>
-
-        {/* Hero Visual - Clean & Structured */}
-        <div className="hidden lg:block lg:col-span-5 h-[600px] relative">
-           <div className="absolute inset-0 border border-white/10 p-3">
-              <div className="relative w-full h-full overflow-hidden bg-brand-gray/50 group">
-                <img 
-                   src="https://photos.fife.usercontent.google.com/pw/AP1GczPTDYe7thZXulxGsKd6jq0VIPFexSPbLlQSLlPoFNutBM0bvi23WB8w=w687-h897-s-no-gm?authuser=0"
-                   className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out scale-100 group-hover:scale-105"
-                   alt="Iman Arzman"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/50 to-transparent opacity-100 transition-opacity duration-500">
-                  <div className="border-l border-brand-accent pl-4">
-                    <p className="text-white font-serif text-lg">Iman Arzman</p>
-                    <p className="font-mono text-[10px] text-brand-accent uppercase tracking-widest">Founder & Principal Strategist</p>
-                  </div>
-                </div>
+            
+            <div className="flex items-center gap-6 pt-8 border-t border-white/5 mt-8">
+              <div className="flex -space-x-3">
+                {[1, 2, 3, 4].map((i) => (
+                  <img 
+                    key={i}
+                    src={`https://ui-avatars.com/api/?name=User+${i}&background=random&color=fff`} 
+                    className="w-10 h-10 rounded-full border-2 border-brand-navy"
+                    alt="Success Client"
+                  />
+                ))}
               </div>
-           </div>
-           
-           {/* Decorative Elements */}
-           <div className="absolute -top-6 -right-6 w-24 h-24 border-t border-r border-white/10 pointer-events-none"></div>
-           <div className="absolute -bottom-6 -left-6 w-24 h-24 border-b border-l border-white/10 pointer-events-none"></div>
+              <p className="text-sm text-brand-text-muted">
+                Join <span className="text-white font-bold">500+ professionals</span> who secured jobs this year.
+              </p>
+            </div>
+          </div>
+
+          {/* Visual Side */}
+          <div className="lg:col-span-5 relative order-1 lg:order-2">
+            <div className="relative aspect-[4/5] w-3/4 lg:w-full mx-auto overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+              {/* 
+                  TODO: Replace the src below with your actual LinkedIn Profile Picture URL.
+                  Currently using a branded Monogram as a fallback.
+              */}
+              <img 
+                src="https://ui-avatars.com/api/?name=Iman+Arzman&background=1e293b&color=fbbf24&size=800&font-size=0.3&bold=true&length=2"
+                className="w-full h-full object-cover transition-all duration-700"
+                alt="Iman Arzman - Senior HR Consultant"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent opacity-80 lg:opacity-60"></div>
+              <div className="absolute bottom-6 left-6 right-6 p-4 bg-brand-navy-light/90 backdrop-blur-md border-l-4 border-brand-gold rounded-r-lg">
+                <p className="font-serif text-xl text-white font-bold">Iman Arzman</p>
+                <p className="text-brand-gold text-[10px] font-mono uppercase tracking-widest mt-1">Senior HR Consultant | PHRi</p>
+              </div>
+            </div>
+            {/* Decorative Gold Elements - Hidden on small mobile to reduce clutter */}
+            <div className="hidden md:block absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-brand-gold/30 rounded-tr-2xl"></div>
+            <div className="hidden md:block absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-brand-gold/30 rounded-bl-2xl"></div>
+          </div>
         </div>
       </div>
     </section>
