@@ -11,17 +11,22 @@ Always prioritize actionable advice over generic platitudes.
 let chatSession: Chat | null = null;
 
 export const checkApiKey = async (): Promise<boolean> => {
-  // If we have a hardcoded or injected env var, we are good.
-  if (process.env.API_KEY) return true;
+  try {
+    // Check for process.env.API_KEY safely
+    if (typeof process !== 'undefined' && process.env && process.env.API_KEY) return true;
+  } catch (e) {
+    // Ignore ReferenceError if process is not defined
+  }
+  
   // Otherwise, check if the user has selected a key in the AI Studio environment.
-  if ((window as any).aistudio) {
+  if (typeof window !== 'undefined' && (window as any).aistudio) {
     return await (window as any).aistudio.hasSelectedApiKey();
   }
   return false;
 };
 
 export const requestApiKey = async (): Promise<void> => {
-  if ((window as any).aistudio) {
+  if (typeof window !== 'undefined' && (window as any).aistudio) {
     await (window as any).aistudio.openSelectKey();
     // Reset session to force re-initialization with the new key
     chatSession = null;
@@ -29,7 +34,15 @@ export const requestApiKey = async (): Promise<void> => {
 };
 
 const getClient = () => {
-  const apiKey = process.env.API_KEY;
+  let apiKey = '';
+  try {
+    if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
+      apiKey = process.env.API_KEY;
+    }
+  } catch (e) {
+    console.warn("Error accessing process.env");
+  }
+
   if (!apiKey) {
     console.warn("API_KEY is missing.");
     return null;

@@ -1,6 +1,14 @@
 import React from 'react';
 
-const credentials = [
+interface CredentialItem {
+  label: string;
+  sub: string;
+  image?: string;
+  icon?: string;
+  link?: string;
+}
+
+const credentials: CredentialItem[] = [
   { 
     label: "PHRi™ Certified", 
     sub: "Professional in HR - International", 
