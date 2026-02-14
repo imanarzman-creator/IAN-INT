@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
               <li><a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-brand-gold transition-colors">LinkedIn</a></li>
               <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-brand-gold transition-colors">Instagram</a></li>
               <li><a href="https://tiktok.com" target="_blank" rel="noreferrer" className="hover:text-brand-gold transition-colors">TikTok</a></li>
-              <li><a href="mailto:hello@imanarzman.com" className="hover:text-brand-gold transition-colors">Email</a></li>
+              <li><a href="mailto:imanarzman@gmail.com" className="hover:text-brand-gold transition-colors">Email</a></li>
             </ul>
           </div>
         </div>
