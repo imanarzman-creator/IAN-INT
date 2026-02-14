@@ -1,8 +1,5 @@
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 
-// Declare process for TypeScript compatibility in browser environments
-declare const process: any;
-
 const SYSTEM_INSTRUCTION = `
 You are IAN (Intelligent Advisor Network), a world-class senior career coach and executive strategist. 
 Your tone is professional, sophisticated, encouraging, yet direct and data-driven.
@@ -13,13 +10,23 @@ Always prioritize actionable advice over generic platitudes.
 
 let chatSession: Chat | null = null;
 
-export const checkApiKey = async (): Promise<boolean> => {
+// Helper to safely get env var without breaking build if process is undefined
+const getEnvApiKey = (): string | null => {
   try {
-    // Check for process.env.API_KEY safely
-    if (typeof process !== 'undefined' && process.env && process.env.API_KEY) return true;
+    // @ts-ignore
+    if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
+      // @ts-ignore
+      return process.env.API_KEY;
+    }
   } catch (e) {
-    // Ignore ReferenceError if process is not defined
+    // ignore
   }
+  return null;
+}
+
+export const checkApiKey = async (): Promise<boolean> => {
+  const envKey = getEnvApiKey();
+  if (envKey) return true;
   
   // Otherwise, check if the user has selected a key in the AI Studio environment.
   if (typeof window !== 'undefined' && (window as any).aistudio) {
@@ -37,15 +44,8 @@ export const requestApiKey = async (): Promise<void> => {
 };
 
 const getClient = () => {
-  let apiKey = '';
-  try {
-    if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
-      apiKey = process.env.API_KEY;
-    }
-  } catch (e) {
-    console.warn("Error accessing process.env");
-  }
-
+  const apiKey = getEnvApiKey();
+  
   if (!apiKey) {
     console.warn("API_KEY is missing.");
     return null;
