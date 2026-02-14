@@ -22,12 +22,22 @@ export const Hero: React.FC = () => {
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
           {/* Copy Side */}
-          <div className="lg:col-span-7 space-y-8 animate-fade-in order-2 lg:order-1">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-gold/10 border border-brand-gold/20 rounded-lg">
-              <span className="text-brand-gold font-mono text-xs font-bold uppercase tracking-widest">15+ Years HR Experience • PHRi Certified</span>
+          <div className="lg:col-span-7 space-y-6 animate-fade-in order-2 lg:order-1">
+            
+            <div className="flex flex-col items-start gap-4">
+                {/* Status Badge - Moved Upfront */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-gold text-brand-navy text-xs font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(251,191,36,0.3)] hover:scale-105 transition-transform cursor-default">
+                    <span className="animate-pulse">🔥</span>
+                    Accepting New Clients
+                </div>
+
+                {/* Credentials */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-navy-light border border-white/10 rounded-lg">
+                  <span className="text-brand-text-muted font-mono text-xs font-bold uppercase tracking-widest">15+ Years HR Experience • PHRi Certified</span>
+                </div>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-serif font-bold leading-tight text-white">
+            <h1 className="text-5xl md:text-7xl font-serif font-bold leading-tight text-white pt-2">
               Stop Getting Rejected. <br />
               <span className="text-brand-gold italic">Get Hired.</span>
             </h1>
@@ -52,7 +62,7 @@ export const Hero: React.FC = () => {
               </button>
             </div>
             
-            <div className="flex items-center gap-6 pt-8 border-t border-white/5 mt-8">
+            <div className="flex items-center gap-6 pt-8 border-t border-white/5 mt-4">
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map((i) => (
                   <img 
@@ -107,21 +117,9 @@ export const Hero: React.FC = () => {
                   </div>
               </a>
 
-              {/* Status Badge */}
-               <div className="absolute top-4 -right-2 md:top-8 md:-right-6 animate-bounce" style={{ animationDuration: '3s' }}>
-                  <div className="bg-brand-navy border border-brand-gold px-3 py-2 rounded-lg shadow-xl flex items-center gap-2">
-                      <span className="text-lg">🔥</span>
-                      <div>
-                          <p className="text-[9px] text-brand-text-muted uppercase leading-tight">Accepting</p>
-                          <p className="text-xs font-bold text-white leading-tight">New Clients</p>
-                      </div>
-                  </div>
-              </div>
-
             </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
