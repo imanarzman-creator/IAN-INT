@@ -14,13 +14,13 @@ export const Navigation: React.FC = () => {
   }, []);
 
   const handleStrategyCall = () => {
-    window.open('https://forms.gle/7mHDrHwQKd23AxUg8', '_blank');
+    // Points to Career Strategy Consultation on Cal.com
+    window.open('https://cal.com/iman-arzman-gcqwj7/career-strategy-consultation', '_blank');
     setMobileMenuOpen(false);
   };
 
   const navLinks = [
     { name: 'Strategy', href: '#services' },
-    { name: 'Consult IAN', href: '#ai-coach' },
     { name: 'Reviews', href: '#testimonials' },
   ];
 

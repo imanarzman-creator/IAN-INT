@@ -3,11 +3,11 @@ import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
 import { TrustBar } from './components/TrustBar';
 import { Services } from './components/Services';
-import { AICoach } from './components/AICoach';
 import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   useEffect(() => {
     // Ensure the page starts at the top on load/refresh, overriding browser scroll memory
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -20,7 +20,6 @@ const App: React.FC = () => {
         <Hero />
         <TrustBar />
         <Services />
-        <AICoach />
         <Testimonials />
         
         {/* Final CTA Section - Authority Driven */}
@@ -32,8 +31,8 @@ const App: React.FC = () => {
                Don't leave your career to chance. Leverage 15 years of HR expertise to position yourself exactly where you want to be.
              </p>
              <button 
-               onClick={() => window.open('https://forms.gle/7mHDrHwQKd23AxUg8', '_blank')}
-               className="px-12 py-5 bg-brand-gold text-brand-navy font-bold text-lg hover:scale-105 transform transition-all duration-300 shadow-xl"
+               onClick={() => window.open('https://cal.com/iman-arzman-gcqwj7/career-strategy-consultation', '_blank')}
+               className="px-12 py-5 bg-brand-gold text-brand-navy font-bold text-lg hover:scale-105 transform transition-all duration-300 shadow-xl rounded-full"
              >
                Start Your Strategy Call
              </button>
@@ -41,8 +40,7 @@ const App: React.FC = () => {
         </section>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
-
-export default App;

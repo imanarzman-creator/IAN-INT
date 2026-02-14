@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './Button';
 
 export const Services: React.FC = () => {
-  const openForm = () => window.open('https://forms.gle/7mHDrHwQKd23AxUg8', '_blank');
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isJoined, setIsJoined] = useState(false);
+
+  const links = {
+    bedahResume: 'https://forms.gle/jALhB4Aqb1pfVepK8',
+    mockInterview: 'https://cal.com/iman-arzman-gcqwj7/mock-interview-simulation-30-mins',
+    careerRoadmap: 'https://cal.com/iman-arzman-gcqwj7/career-strategy-consultation',
+    circle100: 'https://forms.gle/RxPkqW3YE8h74RYr9' 
+  };
+
+  const openLink = (url: string) => window.open(url, '_blank');
+
+  const handleWaitlistSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setIsSubmitting(true);
+    // Simulate API call for waitlist
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsJoined(true);
+      setEmail('');
+    }, 1500);
+  };
 
   return (
     <section id="services" className="bg-brand-navy py-24 border-b border-white/5 scroll-mt-20">
@@ -40,7 +64,7 @@ export const Services: React.FC = () => {
                             <span className="text-white font-bold">RM 450</span>
                             <span className="text-[10px] bg-white/10 px-2 py-1 rounded text-white/60">Per Session</span>
                         </div>
-                        <Button variant="outline" fullWidth onClick={openForm} className="text-xs">Book Review</Button>
+                        <Button variant="outline" fullWidth onClick={() => openLink(links.bedahResume)} className="text-xs">Book Review</Button>
                     </div>
                 </div>
 
@@ -59,7 +83,7 @@ export const Services: React.FC = () => {
                             <span className="text-white font-bold">RM 350</span>
                             <span className="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-1 rounded font-bold uppercase tracking-wide animate-pulse">High Demand</span>
                         </div>
-                        <Button variant="outline" fullWidth onClick={openForm} className="text-xs">Enter War Room</Button>
+                        <Button variant="outline" fullWidth onClick={() => openLink(links.mockInterview)} className="text-xs">Enter War Room</Button>
                     </div>
                 </div>
 
@@ -78,7 +102,7 @@ export const Services: React.FC = () => {
                             <span className="text-white font-bold">RM 550</span>
                             <span className="text-[10px] bg-white/10 px-2 py-1 rounded text-white/60">Comprehensive</span>
                         </div>
-                        <Button variant="outline" fullWidth onClick={openForm} className="text-xs">Build Roadmap</Button>
+                        <Button variant="outline" fullWidth onClick={() => openLink(links.careerRoadmap)} className="text-xs">Build Roadmap</Button>
                     </div>
                 </div>
             </div>
@@ -110,7 +134,7 @@ export const Services: React.FC = () => {
                                 <li className="flex items-center gap-2">✓ Weekly Group Q&A</li>
                             </ul>
                             <div className="flex items-center gap-4">
-                                <Button onClick={openForm} className="shadow-brand-gold/20 shadow-lg px-8">
+                                <Button onClick={() => openLink(links.circle100)} className="shadow-brand-gold/20 shadow-lg px-8">
                                     Join Now • RM 59
                                 </Button>
                                 <span className="text-xs text-brand-text-muted">for 30 days access</span>
@@ -142,10 +166,32 @@ export const Services: React.FC = () => {
                         <p className="text-brand-text-muted text-xs leading-relaxed mb-6">
                             The upcoming manifesto on becoming "hunted" by recruiters. The strategies that didn't make it to the blog.
                         </p>
-                        <div className="space-y-3">
-                            <input type="email" placeholder="Email Address" className="w-full bg-brand-navy border border-white/10 p-3 rounded-lg text-xs text-white focus:border-brand-gold outline-none" />
-                            <button className="w-full bg-white text-brand-navy font-bold py-3 rounded-lg hover:bg-brand-gold transition-colors text-xs uppercase tracking-widest">Join Waitlist</button>
-                        </div>
+                        
+                        {isJoined ? (
+                            <div className="bg-green-500/10 border border-green-500/20 p-4 rounded-lg text-center animate-fade-in">
+                                <p className="text-green-400 font-bold text-sm mb-1">You're on the list!</p>
+                                <p className="text-green-400/70 text-[10px]">Watch your inbox for exclusive previews.</p>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleWaitlistSubmit} className="space-y-3">
+                                <input 
+                                    type="email" 
+                                    placeholder="Email Address" 
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    className="w-full bg-brand-navy border border-white/10 p-3 rounded-lg text-xs text-white focus:border-brand-gold outline-none transition-colors placeholder:text-white/20" 
+                                />
+                                <button 
+                                    type="submit" 
+                                    disabled={isSubmitting}
+                                    className="w-full bg-white text-brand-navy font-bold py-3 rounded-lg hover:bg-brand-gold hover:text-brand-navy transition-all duration-300 text-xs uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {isSubmitting ? 'Joining...' : 'Join Waitlist'}
+                                </button>
+                            </form>
+                        )}
+                        
                         <p className="text-[10px] text-brand-text-muted mt-6 italic text-center opacity-50">Expected Launch: March 2026</p>
                     </div>
                 </div>
