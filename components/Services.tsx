@@ -116,7 +116,7 @@ export const Services: React.FC = () => {
                         {/* FOMO Progress Bar */}
                         <div className="mb-4">
                              <div className="w-full bg-brand-navy rounded-full h-2 mb-2 border border-white/5 overflow-hidden">
-                                <div className="bg-brand-gold h-full rounded-full animate-[width_1s_ease-out]" style={{width: '89%'}}></div>
+                                <div className="bg-brand-gold h-full rounded-full transition-all duration-1000 ease-out" style={{width: '89%'}}></div>
                              </div>
                              <div className="flex justify-between items-end">
                                 <span className="text-[10px] text-red-400 font-bold uppercase tracking-wider animate-pulse">Seats Limited!</span>

@@ -1,5 +1,8 @@
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 
+// Declare process for TypeScript compatibility in browser environments
+declare const process: any;
+
 const SYSTEM_INSTRUCTION = `
 You are IAN (Intelligent Advisor Network), a world-class senior career coach and executive strategist. 
 Your tone is professional, sophisticated, encouraging, yet direct and data-driven.
