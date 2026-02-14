@@ -6,11 +6,13 @@ export const Services: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isJoined, setIsJoined] = useState(false);
 
+  // Links
   const links = {
     bedahResume: 'https://forms.gle/jALhB4Aqb1pfVepK8',
     mockInterview: 'https://cal.com/iman-arzman-gcqwj7/mock-interview-simulation-30-mins',
     careerRoadmap: 'https://cal.com/iman-arzman-gcqwj7/career-strategy-consultation',
-    circle100: 'https://forms.gle/RxPkqW3YE8h74RYr9' 
+    b2bConsult: 'mailto:imanarzman@gmail.com?subject=Corporate%20Consultancy%20Inquiry',
+    circle100: 'https://forms.gle/QyR7csTf13ZRVT4y8'
   };
 
   const openLink = (url: string) => window.open(url, '_blank');
@@ -18,14 +20,8 @@ export const Services: React.FC = () => {
   const handleWaitlistSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    
     setIsSubmitting(true);
-    // Simulate API call for waitlist
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsJoined(true);
-      setEmail('');
-    }, 1500);
+    setTimeout(() => { setIsSubmitting(false); setIsJoined(true); setEmail(''); }, 1500);
   };
 
   return (
@@ -33,167 +29,181 @@ export const Services: React.FC = () => {
       <div className="container mx-auto px-6">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-4xl mx-auto text-center mb-20">
           <h2 className="text-sm font-mono text-brand-gold uppercase tracking-[0.3em] mb-4">The Ecosystem</h2>
           <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Master the Game of Employment</h3>
-          <p className="text-brand-text-muted text-lg">
-            Whether you need a tactical fix, a strategic overhaul, or a community of winners. Choose your weapon.
+          <p className="text-brand-text-muted text-lg max-w-2xl mx-auto">
+            Whether you are an individual climbing the ladder or an organization building a winning culture.
           </p>
         </div>
 
-        {/* HIGH END 1-on-1 SERVICES GRID */}
-        <div className="mb-8">
-            <h4 className="text-white font-bold text-xl mb-6 flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
-                Premium 1-on-1 Consultation
-            </h4>
-            <div className="grid lg:grid-cols-3 gap-6">
-            
+        {/* --- PART 1: INDIVIDUAL SERVICES (B2C) --- */}
+        <div className="mb-24">
+            <div className="flex items-center gap-4 mb-10">
+                <h4 className="text-white font-bold text-2xl font-serif">For Individuals</h4>
+                <div className="h-px bg-white/10 flex-1"></div>
+            </div>
+
+            {/* Service Grid */}
+            <div className="grid lg:grid-cols-3 gap-6 mb-12">
                 {/* 1. Bedah Resume */}
-                <div className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all group flex flex-col">
-                    <div className="mb-6">
-                        <span className="text-3xl">📄</span>
-                        <h5 className="text-xl font-serif font-bold text-white mt-4">Bedah Resume</h5>
-                        <p className="text-xs font-mono text-brand-gold mt-1 uppercase tracking-wider">The Foundation</p>
-                    </div>
+                <div className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/50 transition-all group flex flex-col hover:-translate-y-1 duration-300">
+                    <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-gold group-hover:text-brand-navy transition-colors">📄</div>
+                    <h5 className="text-xl font-bold text-white mb-2">Bedah Resume</h5>
+                    <p className="text-xs font-mono text-brand-gold uppercase tracking-wider mb-4">The Foundation</p>
                     <p className="text-brand-text-muted text-sm leading-relaxed mb-8 flex-1">
-                        A surgical review of your resume. We identify gaps, optimize for ATS systems, and rewrite your narrative to hook recruiters in 6 seconds.
+                        Surgical review of your CV. We optimize for ATS, narrative flow, and recruiter psychology. 
+                        <br/><span className="italic opacity-60">Result: More interview callbacks.</span>
                     </p>
                     <div className="pt-6 border-t border-white/5">
-                        <div className="flex justify-between items-center mb-4">
-                            <span className="text-white font-bold">RM 450</span>
-                            <span className="text-[10px] bg-white/10 px-2 py-1 rounded text-white/60">Per Session</span>
+                        <div className="flex flex-col mb-4">
+                            <span className="text-brand-text-muted line-through text-sm">RM 450</span>
+                            <span className="text-brand-gold font-bold text-3xl">RM 59 <span className="text-xs text-white/50 font-normal ml-1 align-middle">PROMO</span></span>
                         </div>
-                        <Button variant="outline" fullWidth onClick={() => openLink(links.bedahResume)} className="text-xs">Book Review</Button>
+                        <Button variant="outline" fullWidth onClick={() => openLink(links.bedahResume)}>Book Session</Button>
                     </div>
                 </div>
 
-                {/* 2. Mock Interview (New) */}
-                <div className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all group flex flex-col relative overflow-hidden">
-                    <div className="mb-6 relative z-10">
-                        <span className="text-3xl">🎙️</span>
-                        <h5 className="text-xl font-serif font-bold text-white mt-4">Mock Interview</h5>
-                        <p className="text-xs font-mono text-brand-gold mt-1 uppercase tracking-wider">The Simulation</p>
-                    </div>
+                {/* 2. Mock Interview */}
+                <div className="bg-brand-navy-light p-8 rounded-2xl border border-brand-gold/20 relative overflow-hidden group flex flex-col hover:-translate-y-1 duration-300 shadow-[0_0_30px_rgba(251,191,36,0.05)]">
+                    <div className="absolute top-0 right-0 bg-brand-gold text-brand-navy text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest">Most Popular</div>
+                    <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-gold group-hover:text-brand-navy transition-colors">🎙️</div>
+                    <h5 className="text-xl font-bold text-white mb-2">Mock Interview</h5>
+                    <p className="text-xs font-mono text-brand-gold uppercase tracking-wider mb-4">The Simulation</p>
                     <p className="text-brand-text-muted text-sm leading-relaxed mb-8 flex-1">
-                        Step into the "War Room". A high-pressure simulation of your upcoming interview. We refine your body language, tone, and strategic answers.
+                        High-pressure simulation of your upcoming interview. Refine your answers, tone, and body language.
+                        <br/><span className="italic opacity-60">Result: Confidence & Offer Letters.</span>
                     </p>
-                    <div className="pt-6 border-t border-white/5 relative z-10">
-                        <div className="flex justify-between items-center mb-4">
-                            <span className="text-white font-bold">RM 350</span>
-                            <span className="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-1 rounded font-bold uppercase tracking-wide animate-pulse">High Demand</span>
+                    <div className="pt-6 border-t border-white/5">
+                         <div className="flex flex-col mb-4">
+                            <span className="text-brand-text-muted line-through text-sm">RM 350</span>
+                            <span className="text-brand-gold font-bold text-3xl">RM 49 <span className="text-xs text-white/50 font-normal ml-1 align-middle">PROMO</span></span>
                         </div>
-                        <Button variant="outline" fullWidth onClick={() => openLink(links.mockInterview)} className="text-xs">Enter War Room</Button>
+                        <Button variant="primary" fullWidth onClick={() => openLink(links.mockInterview)}>Enter War Room</Button>
                     </div>
                 </div>
 
-                {/* 3. Career Roadmap (New) */}
-                <div className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all group flex flex-col">
-                    <div className="mb-6">
-                        <span className="text-3xl">🗺️</span>
-                        <h5 className="text-xl font-serif font-bold text-white mt-4">Career Roadmap</h5>
-                        <p className="text-xs font-mono text-brand-gold mt-1 uppercase tracking-wider">The Long Game</p>
-                    </div>
+                {/* 3. Career Roadmap */}
+                <div className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/50 transition-all group flex flex-col hover:-translate-y-1 duration-300">
+                    <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-gold group-hover:text-brand-navy transition-colors">🗺️</div>
+                    <h5 className="text-xl font-bold text-white mb-2">Career Strategy</h5>
+                    <p className="text-xs font-mono text-brand-gold uppercase tracking-wider mb-4">The Long Game</p>
                     <p className="text-brand-text-muted text-sm leading-relaxed mb-8 flex-1">
-                        Stop guessing. We build a 3-5 year execution plan for your promotion, salary negotiation, and industry pivot. Includes salary benchmarking.
+                        3-5 year execution plan. Salary negotiation tactics, industry pivoting, and personal branding.
+                        <br/><span className="italic opacity-60">Result: Clarity & Income Growth.</span>
                     </p>
                     <div className="pt-6 border-t border-white/5">
-                        <div className="flex justify-between items-center mb-4">
-                            <span className="text-white font-bold">RM 550</span>
-                            <span className="text-[10px] bg-white/10 px-2 py-1 rounded text-white/60">Comprehensive</span>
+                        <div className="flex flex-col mb-4">
+                            <span className="text-brand-text-muted line-through text-sm">RM 550</span>
+                            <span className="text-brand-gold font-bold text-3xl">RM 89 <span className="text-xs text-white/50 font-normal ml-1 align-middle">PROMO</span></span>
                         </div>
-                        <Button variant="outline" fullWidth onClick={() => openLink(links.careerRoadmap)} className="text-xs">Build Roadmap</Button>
+                        <Button variant="outline" fullWidth onClick={() => openLink(links.careerRoadmap)}>Build Roadmap</Button>
                     </div>
                 </div>
             </div>
-        </div>
 
-        {/* CIRCLE 100 - THE NO BRAINER OFFER */}
-        <div className="grid lg:grid-cols-12 gap-8 mb-8">
-            <div className="lg:col-span-8">
-                <div className="bg-gradient-to-br from-brand-gold/10 to-brand-navy border border-brand-gold/50 rounded-2xl p-8 md:p-12 relative overflow-hidden group shadow-[0_0_50px_rgba(251,191,36,0.1)]">
-                    {/* Background Glint */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold blur-[100px] opacity-20 pointer-events-none"></div>
-                    
-                    <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-                        <div className="flex-1">
-                            <div className="flex items-center gap-3 mb-4">
-                                <span className="bg-brand-gold text-brand-navy text-[10px] font-bold uppercase tracking-[0.2em] px-2 py-1 rounded-sm">Best Value</span>
-                                <span className="text-red-400 text-[10px] font-bold uppercase tracking-[0.2em] animate-pulse">87% Spots Taken</span>
-                            </div>
-                            <h4 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
-                                Circle 100 <span className="text-brand-gold font-light italic">Access</span>
-                            </h4>
-                            <p className="text-white/80 text-sm md:text-base leading-relaxed mb-6">
-                                Can't commit to 1-on-1 yet? Get the <strong>blueprint for all three</strong>. Join the inner circle and access the methodologies for Resume, Interview, and Career Strategy in one place.
-                            </p>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-xs font-mono text-brand-gold/90 mb-8">
-                                <li className="flex items-center gap-2">✓ Resume Structures</li>
-                                <li className="flex items-center gap-2">✓ Interview Scripts</li>
-                                <li className="flex items-center gap-2">✓ Roadmap Templates</li>
-                                <li className="flex items-center gap-2">✓ Weekly Group Q&A</li>
-                            </ul>
-                            <div className="flex items-center gap-4">
-                                <Button onClick={() => openLink(links.circle100)} className="shadow-brand-gold/20 shadow-lg px-8">
-                                    Join Now • RM 59
-                                </Button>
-                                <span className="text-xs text-brand-text-muted">for 30 days access</span>
-                            </div>
+            {/* Circle 100 & Ebook Layout */}
+            <div className="grid lg:grid-cols-2 gap-6">
+                 {/* Circle 100 */}
+                 <div className="bg-gradient-to-br from-brand-navy-light to-[#162032] border border-white/10 rounded-2xl p-8 flex flex-col justify-between relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold blur-[80px] opacity-10"></div>
+                    <div>
+                        <div className="flex justify-between items-start mb-4">
+                             <h5 className="text-2xl font-serif font-bold text-white">Circle 100</h5>
+                             <span className="bg-red-500/20 text-red-400 text-[10px] font-bold px-2 py-1 rounded border border-red-500/20 animate-pulse">FEW SEATS LEFT</span>
                         </div>
                         
-                        {/* Visual for Bundle */}
-                        <div className="w-full md:w-1/3 bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-white/10 text-center">
-                            <p className="text-[10px] uppercase tracking-widest text-white/50 mb-2">Total Value RM 1350+</p>
-                            <div className="text-4xl font-bold text-white mb-1">RM 59</div>
-                            <div className="text-xs text-brand-gold mb-4">Limited Time Offer</div>
-                            <div className="space-y-2 text-left">
-                                <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                                    <div className="h-full bg-red-500 w-[87%]"></div>
-                                </div>
-                                <p className="text-[9px] text-right text-white/50">Batch closing soon</p>
-                            </div>
+                        {/* FOMO Progress Bar */}
+                        <div className="mb-4">
+                             <div className="w-full bg-brand-navy rounded-full h-2 mb-2 border border-white/5 overflow-hidden">
+                                <div className="bg-brand-gold h-full rounded-full animate-[width_1s_ease-out]" style={{width: '89%'}}></div>
+                             </div>
+                             <div className="flex justify-between items-end">
+                                <span className="text-[10px] text-red-400 font-bold uppercase tracking-wider animate-pulse">Seats Limited!</span>
+                                <span className="text-[10px] text-brand-gold font-mono uppercase tracking-wider text-right">89% Slots Occupied</span>
+                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            {/* EBOOK - LEAD GEN */}
-            <div className="lg:col-span-4">
-                <div id="ebook" className="bg-brand-navy-light h-full p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all flex flex-col justify-center relative overflow-hidden">
-                    <div className="relative z-10">
-                        <span className="text-4xl mb-6 block">📖</span>
-                        <h4 className="text-2xl font-serif font-bold text-white mb-2">"JANGAN MINTA KERJA"</h4>
-                        <p className="text-brand-text-muted text-xs leading-relaxed mb-6">
-                            The upcoming manifesto on becoming "hunted" by recruiters. The strategies that didn't make it to the blog.
+                        <p className="text-brand-text-muted text-sm mb-6">
+                            Exclusive community access. Weekly Q&A, templates vault, and peer networking. The most affordable way to get continuous mentorship.
                         </p>
-                        
-                        {isJoined ? (
-                            <div className="bg-green-500/10 border border-green-500/20 p-4 rounded-lg text-center animate-fade-in">
-                                <p className="text-green-400 font-bold text-sm mb-1">You're on the list!</p>
-                                <p className="text-green-400/70 text-[10px]">Watch your inbox for exclusive previews.</p>
+                    </div>
+                    
+                    {/* Reverted to Button */}
+                    <div className="mt-auto w-full relative z-10 pt-6 border-t border-white/5">
+                        <div className="flex flex-col mb-4">
+                             <span className="text-brand-text-muted line-through text-sm">RM 1,200</span>
+                             <span className="text-brand-gold font-bold text-3xl">RM 59 <span className="text-xs text-white/50 font-normal ml-1 align-middle">LIMITED TIME</span></span>
+                        </div>
+                        <Button variant="primary" fullWidth onClick={() => openLink(links.circle100)}>
+                           Join Now
+                        </Button>
+                    </div>
+                 </div>
+
+                 {/* Ebook */}
+                 <div className="bg-brand-navy-light border border-white/10 rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <h5 className="text-2xl font-serif font-bold text-white mb-2">"JANGAN MINTA KERJA"</h5>
+                        <p className="text-brand-text-muted text-sm mb-6">
+                            My upcoming book. The manifesto on becoming "hunted" by recruiters. Join the launch list.
+                        </p>
+                    </div>
+                     {isJoined ? (
+                            <div className="bg-green-500/10 border border-green-500/20 p-3 rounded-lg text-center">
+                                <p className="text-green-400 font-bold text-sm">You're on the list!</p>
                             </div>
                         ) : (
-                            <form onSubmit={handleWaitlistSubmit} className="space-y-3">
+                            <form onSubmit={handleWaitlistSubmit} className="flex gap-2">
                                 <input 
                                     type="email" 
-                                    placeholder="Email Address" 
+                                    placeholder="Your Email" 
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    className="w-full bg-brand-navy border border-white/10 p-3 rounded-lg text-xs text-white focus:border-brand-gold outline-none transition-colors placeholder:text-white/20" 
+                                    className="flex-1 bg-brand-navy border border-white/10 px-4 rounded-lg text-sm text-white focus:border-brand-gold outline-none" 
                                 />
-                                <button 
-                                    type="submit" 
-                                    disabled={isSubmitting}
-                                    className="w-full bg-white text-brand-navy font-bold py-3 rounded-lg hover:bg-brand-gold hover:text-brand-navy transition-all duration-300 text-xs uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    {isSubmitting ? 'Joining...' : 'Join Waitlist'}
+                                <button type="submit" className="bg-white text-brand-navy font-bold px-4 py-3 rounded-lg text-xs hover:bg-brand-gold transition-colors">
+                                    {isSubmitting ? '...' : 'NOTIFY ME'}
                                 </button>
                             </form>
                         )}
-                        
-                        <p className="text-[10px] text-brand-text-muted mt-6 italic text-center opacity-50">Expected Launch: March 2026</p>
-                    </div>
+                 </div>
+            </div>
+        </div>
+
+        {/* --- PART 2: CORPORATE SERVICES (B2B) --- */}
+        <div>
+            <div className="flex items-center gap-4 mb-10">
+                <h4 className="text-white font-bold text-2xl font-serif">For Organizations</h4>
+                <div className="h-px bg-white/10 flex-1"></div>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+                {/* HR Consultancy */}
+                <div className="group relative bg-[#0f172a] border border-white/10 p-8 rounded-2xl hover:bg-[#162032] transition-colors">
+                    <h5 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <span>🏢</span> HR Consultancy
+                    </h5>
+                    <p className="text-brand-text-muted text-sm leading-relaxed mb-6">
+                        Strategic intervention for SMEs and Startups. Talent acquisition frameworks, performance management systems, and HR policy auditing.
+                    </p>
+                    <a href={links.b2bConsult} className="text-brand-gold text-sm font-bold uppercase tracking-widest hover:underline flex items-center gap-2">
+                        Inquire Services <span>→</span>
+                    </a>
+                </div>
+
+                {/* Corporate Training */}
+                <div className="group relative bg-[#0f172a] border border-white/10 p-8 rounded-2xl hover:bg-[#162032] transition-colors">
+                    <h5 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <span>🎓</span> Corporate Training
+                    </h5>
+                    <p className="text-brand-text-muted text-sm leading-relaxed mb-6">
+                        TTT Certified workshops. Leadership development, communication mastery, and emotional intelligence for high-performance teams.
+                    </p>
+                    <a href={links.b2bConsult} className="text-brand-gold text-sm font-bold uppercase tracking-widest hover:underline flex items-center gap-2">
+                        Request Training Deck <span>→</span>
+                    </a>
                 </div>
             </div>
         </div>

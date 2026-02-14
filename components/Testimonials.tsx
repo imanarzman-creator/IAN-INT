@@ -6,27 +6,27 @@ const GOOGLE_REVIEW_LINK = "https://share.google/0ogIPTcF7tLjXbnKq";
 const testimonials: Testimonial[] = [
   {
     id: '1',
-    name: "Nur Ain Andie",
-    role: "Verified Client",
-    company: "Google Review",
-    quote: "Highly recommended! He is straightforward, honest, and extremely helpful. He gives clear feedback without sugarcoating, which is exactly what I needed.",
-    image: "https://ui-avatars.com/api/?name=Nur+Ain+Andie&background=fbbf24&color=0f172a&size=150"
+    name: "Danial Hilmie",
+    role: "Fresh Graduate (1st Class Hons)",
+    company: "Engineering",
+    quote: "I was genuinely amazed by the depth of knowledge he brought to the table. He conducted an outstanding resume review session... it was unlike anything I had come across, even in my extensive exploration of other career websites.",
+    image: "https://ui-avatars.com/api/?name=Danial+Hilmie&background=fbbf24&color=0f172a&size=150"
   },
   {
     id: '2',
-    name: "fnd yusup",
-    role: "Verified Client",
-    company: "Google Review",
-    quote: "The brutal truth that I longed to receive after being stuck for a while. Highly recommended for those looking to engage a professional who doesn't sugarcoat.",
-    image: "https://ui-avatars.com/api/?name=fnd+yusup&background=fbbf24&color=0f172a&size=150"
+    name: "Mugilen Maniam",
+    role: "Head of Integrity & Governance",
+    company: "CGC Malaysia",
+    quote: "Iman has been instrumental in strengthening our Performance and Rewards framework. His work not only enhanced clarity and transparency... but also aligned KPIs more effectively with organizational goals.",
+    image: "https://ui-avatars.com/api/?name=Mugilen+Maniam&background=fbbf24&color=0f172a&size=150"
   },
   {
     id: '3',
-    name: "Miss PinkY",
-    role: "Verified Client",
-    company: "Google Review",
-    quote: "Received feedback immediately about my resume — truly eye-opening. The way he distinguishes between task-based vs impact-based is very clear & practical.",
-    image: "https://ui-avatars.com/api/?name=Miss+PinkY&background=fbbf24&color=0f172a&size=150"
+    name: "Thiam Chun Ong",
+    role: "Sales & Operation Manager",
+    company: "Utama Turbine Services",
+    quote: "Iman is a proactive and self-motivated personnel, regardless of the challenges he is facing. Always with cheerful charisma, he is a true team player who brings positive energy to any group activity.",
+    image: "https://ui-avatars.com/api/?name=Thiam+Chun+Ong&background=fbbf24&color=0f172a&size=150"
   }
 ];
 
@@ -41,7 +41,7 @@ const GoogleLogo = () => (
 
 export const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="bg-brand-navy border-b border-white/5">
+    <section id="testimonials" className="bg-brand-navy border-b border-white/5 scroll-mt-28">
       <div className="container mx-auto px-6 py-24">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
           <div>

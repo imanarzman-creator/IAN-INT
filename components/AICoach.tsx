@@ -38,7 +38,7 @@ export const AICoach: React.FC = () => {
   };
 
   return (
-    <section id="ai-coach" className="py-24 bg-brand-navy border-b border-white/5 relative overflow-hidden">
+    <section id="ai-coach" className="py-24 bg-brand-navy border-b border-white/5 relative overflow-hidden scroll-mt-28">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-navy-light/30 to-transparent pointer-events-none"></div>
 

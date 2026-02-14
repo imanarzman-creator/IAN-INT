@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
+import { AwardBanner } from './components/AwardBanner';
 import { TrustBar } from './components/TrustBar';
+import { About } from './components/About';
+import { AICoach } from './components/AICoach';
 import { Services } from './components/Services';
 import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
@@ -18,7 +21,10 @@ export const App: React.FC = () => {
       <Navigation />
       <main>
         <Hero />
+        <AwardBanner />
         <TrustBar />
+        <About />
+        <AICoach />
         <Services />
         <Testimonials />
         

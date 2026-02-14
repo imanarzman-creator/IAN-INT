@@ -32,7 +32,7 @@ export const getChatSession = (): Chat => {
     }
     
     chatSession = client.chats.create({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3-pro-preview',
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
       },

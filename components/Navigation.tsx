@@ -19,8 +19,29 @@ export const Navigation: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      // Calculate offset to account for fixed header (approx 100px)
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   const navLinks = [
     { name: 'Strategy', href: '#services' },
+    { name: 'Ask IAN', href: '#ai-coach' },
     { name: 'Reviews', href: '#testimonials' },
   ];
 
@@ -35,7 +56,11 @@ export const Navigation: React.FC = () => {
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
-          <a href="#" className="flex flex-col group">
+          <a 
+            href="#" 
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            className="flex flex-col group cursor-pointer"
+          >
             <span className="text-xl font-serif font-bold text-white tracking-tight leading-none">IMAN ARZMAN</span>
             <span className="text-[10px] font-mono font-bold text-brand-gold tracking-[0.3em] uppercase opacity-80">HR Consultant</span>
           </a>
@@ -45,8 +70,9 @@ export const Navigation: React.FC = () => {
             {navLinks.map((link) => (
               <a 
                 key={link.name}
-                href={link.href} 
-                className="text-[11px] font-bold text-white/70 hover:text-brand-gold transition-colors tracking-widest uppercase font-sans"
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.href)}
+                className="text-[11px] font-bold text-white/70 hover:text-brand-gold transition-colors tracking-widest uppercase font-sans cursor-pointer"
               >
                 {link.name}
               </a>
@@ -55,7 +81,7 @@ export const Navigation: React.FC = () => {
               className="bg-brand-gold text-brand-navy px-6 py-2 text-[10px] font-bold uppercase tracking-widest hover:bg-white" 
               onClick={handleStrategyCall}
             >
-              Book Now
+              Book Strategy Call
             </Button>
           </div>
 
@@ -83,8 +109,8 @@ export const Navigation: React.FC = () => {
           <a 
             key={link.name}
             href={link.href} 
-            onClick={() => setMobileMenuOpen(false)} 
-            className="text-2xl font-serif text-white hover:text-brand-gold transition-colors"
+            onClick={(e) => scrollToSection(e, link.href)} 
+            className="text-2xl font-serif text-white hover:text-brand-gold transition-colors cursor-pointer"
           >
             {link.name}
           </a>
