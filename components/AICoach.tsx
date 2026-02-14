@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { sendMessageToIan, checkApiKey, requestApiKey } from '../services/geminiService';
+import { sendMessageToIan } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
 export const AICoach: React.FC = () => {
@@ -8,16 +8,7 @@ export const AICoach: React.FC = () => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isApiKeyReady, setIsApiKeyReady] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const initCheck = async () => {
-      const ready = await checkApiKey();
-      setIsApiKeyReady(ready);
-    };
-    initCheck();
-  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -27,16 +18,9 @@ export const AICoach: React.FC = () => {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  const handleInitialize = async () => {
-    await requestApiKey();
-    // Re-check after request (mitigating race condition by assuming success if action taken, but good to check)
-    // In this env, we assume success after the dialog
-    setIsApiKeyReady(true);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isLoading || !isApiKeyReady) return;
+    if (!input.trim() || isLoading) return;
 
     const userMessage = input.trim();
     setInput('');
@@ -92,7 +76,7 @@ export const AICoach: React.FC = () => {
             {/* Terminal Header */}
             <div className="bg-[#0f1218] p-4 border-b border-white/5 flex justify-between items-center">
               <div className="flex items-center gap-3">
-                 <div className={`w-2 h-2 rounded-full shadow-[0_0_10px_rgba(251,191,36,0.5)] ${isApiKeyReady ? 'bg-brand-gold animate-pulse' : 'bg-red-500'}`}></div>
+                 <div className="w-2 h-2 bg-brand-gold rounded-full animate-pulse shadow-[0_0_10px_rgba(251,191,36,0.5)]"></div>
                  <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-brand-text-muted">IAN_INTELLIGENCE_NODE</span>
               </div>
               <div className="flex gap-1.5 opacity-50">
@@ -101,64 +85,44 @@ export const AICoach: React.FC = () => {
               </div>
             </div>
 
-            {/* Chat Area or Connect Overlay */}
-            <div className="flex-1 overflow-y-auto relative font-mono text-sm scrollbar-thin scrollbar-thumb-brand-gold/20 scrollbar-track-transparent">
-              {!isApiKeyReady ? (
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0f1218]/90 backdrop-blur-sm p-6 text-center">
-                  <div className="w-16 h-16 mb-6 rounded-full bg-brand-navy border border-white/10 flex items-center justify-center">
-                    <span className="text-2xl">🔒</span>
-                  </div>
-                  <h3 className="text-white font-bold text-lg mb-2">System Locked</h3>
-                  <p className="text-brand-text-muted mb-8 max-w-sm">
-                    IAN requires a secure API connection to access the neural network. Please initialize the system key to proceed.
-                  </p>
-                  <button 
-                    onClick={handleInitialize}
-                    className="px-8 py-3 bg-brand-gold text-brand-navy font-bold uppercase tracking-widest text-xs rounded hover:bg-white hover:shadow-[0_0_20px_rgba(251,191,36,0.4)] transition-all duration-300 border border-transparent animate-pulse"
-                  >
-                    Initialize Protocol
-                  </button>
-                </div>
-              ) : null}
-
-              <div className="p-6 space-y-8">
-                {messages.map((msg, idx) => (
+            {/* Chat Area */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-8 font-mono text-sm scrollbar-thin scrollbar-thumb-brand-gold/20 scrollbar-track-transparent">
+              {messages.map((msg, idx) => (
+                <div 
+                  key={idx} 
+                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
                   <div 
-                    key={idx} 
-                    className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                    className={`
+                      max-w-[85%] md:max-w-[70%] p-5 rounded-lg relative shadow-md
+                      ${msg.role === 'user' 
+                        ? 'bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-right rounded-tr-none' 
+                        : 'bg-[#0f1218] border border-white/5 text-gray-300 rounded-tl-none'
+                      }
+                      ${msg.isError ? 'border-red-500/30 text-red-400' : ''}
+                    `}
                   >
-                    <div 
-                      className={`
-                        max-w-[85%] md:max-w-[70%] p-5 rounded-lg relative shadow-md
-                        ${msg.role === 'user' 
-                          ? 'bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-right rounded-tr-none' 
-                          : 'bg-[#0f1218] border border-white/5 text-gray-300 rounded-tl-none'
-                        }
-                        ${msg.isError ? 'border-red-500/30 text-red-400' : ''}
-                      `}
-                    >
-                      {msg.role === 'model' && (
-                        <span className="absolute -top-3 left-0 bg-brand-gold text-brand-navy px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest rounded-sm">IAN</span>
-                      )}
-                      <p className="leading-relaxed whitespace-pre-wrap">{msg.text}</p>
-                    </div>
+                    {msg.role === 'model' && (
+                       <span className="absolute -top-3 left-0 bg-brand-gold text-brand-navy px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest rounded-sm">IAN</span>
+                    )}
+                    <p className="leading-relaxed whitespace-pre-wrap">{msg.text}</p>
                   </div>
-                ))}
-                
-                {isLoading && (
-                  <div className="flex justify-start">
-                    <div className="bg-[#0f1218] border border-white/5 p-4 rounded-lg rounded-tl-none flex items-center gap-3 text-xs text-brand-gold font-mono">
-                      <span className="animate-pulse">Processing HR Data</span>
-                      <span className="flex gap-1">
-                        <span className="w-1 h-1 bg-brand-gold rounded-full animate-bounce" style={{animationDelay: '0ms'}}></span>
-                        <span className="w-1 h-1 bg-brand-gold rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
-                        <span className="w-1 h-1 bg-brand-gold rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
-                      </span>
-                    </div>
+                </div>
+              ))}
+              
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-[#0f1218] border border-white/5 p-4 rounded-lg rounded-tl-none flex items-center gap-3 text-xs text-brand-gold font-mono">
+                    <span className="animate-pulse">Processing HR Data</span>
+                    <span className="flex gap-1">
+                      <span className="w-1 h-1 bg-brand-gold rounded-full animate-bounce" style={{animationDelay: '0ms'}}></span>
+                      <span className="w-1 h-1 bg-brand-gold rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
+                      <span className="w-1 h-1 bg-brand-gold rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
+                    </span>
                   </div>
-                )}
-                <div ref={messagesEndRef} />
-              </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Input */}
@@ -169,13 +133,12 @@ export const AICoach: React.FC = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask a career question..."
-                  disabled={!isApiKeyReady || isLoading}
-                  className="flex-1 bg-brand-navy border border-white/10 px-4 py-3 rounded-lg text-white placeholder-white/20 focus:outline-none focus:border-brand-gold transition-colors font-mono text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-brand-navy border border-white/10 px-4 py-3 rounded-lg text-white placeholder-white/20 focus:outline-none focus:border-brand-gold transition-colors font-mono text-sm"
                   autoComplete="off"
                 />
                 <button 
                   type="submit" 
-                  disabled={!isApiKeyReady || isLoading} 
+                  disabled={isLoading} 
                   className="px-6 py-2 bg-brand-gold text-brand-navy rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(251,191,36,0.1)]"
                 >
                   Send

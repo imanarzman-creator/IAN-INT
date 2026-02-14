@@ -106,8 +106,8 @@ export const Hero: React.FC = () => {
                 className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] z-20 cursor-pointer hover:scale-105 transition-transform duration-300"
               >
                   <div className="bg-[#25D366] text-white p-3 rounded-xl shadow-2xl border border-white/20 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-sm">
-                      {/* Shine effect - removed undefined animation */}
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                      {/* Shine effect */}
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
                       
                       <div className="flex items-center gap-2 mb-1 relative z-10">
                         <span className="text-lg font-bold uppercase tracking-tight">DM SEKARANG</span>
