@@ -7,7 +7,7 @@ export const Hero: React.FC = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
         <img 
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop" 
+          src="https://photos.fife.usercontent.google.com/pw/AP1GczPTDYe7thZXulxGsKd6jq0VIPFexSPbLlQSLlPoFNutBM0bvi23WB8w=w687-h897-s-no-gm?authuser=0" 
           alt="Iman Arzman Background" 
           className="w-full h-full object-cover opacity-[0.08] grayscale scale-105"
         />
@@ -64,7 +64,7 @@ export const Hero: React.FC = () => {
            <div className="absolute inset-0 border border-white/10 p-3">
               <div className="relative w-full h-full overflow-hidden bg-brand-gray/50 group">
                 <img 
-                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop"
+                   src="https://photos.fife.usercontent.google.com/pw/AP1GczPTDYe7thZXulxGsKd6jq0VIPFexSPbLlQSLlPoFNutBM0bvi23WB8w=w687-h897-s-no-gm?authuser=0"
                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out scale-100 group-hover:scale-105"
                    alt="Iman Arzman"
                 />
