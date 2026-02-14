@@ -33,7 +33,15 @@ export const Hero: React.FC = () => {
 
                 {/* Credentials */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-navy-light border border-white/10 rounded-lg">
-                  <span className="text-brand-text-muted font-mono text-xs font-bold uppercase tracking-widest">15+ Years HR Experience • PHRi Certified</span>
+                  <span className="text-brand-text-muted font-mono text-xs font-bold uppercase tracking-widest">15+ Years HR Experience • </span>
+                  <a 
+                    href="https://www.credly.com/badges/fb83c073-f009-4140-8651-f6d014d19c54/linked_in_profile"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-gold hover:text-white transition-colors font-mono text-xs font-bold uppercase tracking-widest border-b border-brand-gold/30 hover:border-white"
+                  >
+                    PHRi Certified
+                  </a>
                 </div>
             </div>
             

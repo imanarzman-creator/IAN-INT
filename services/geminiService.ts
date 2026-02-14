@@ -12,9 +12,22 @@ Always prioritize actionable advice over generic platitudes.
 let chatSession: Chat | null = null;
 let genAI: GoogleGenAI | null = null;
 
+const getApiKey = (): string | undefined => {
+  try {
+    // @ts-ignore
+    if (typeof process !== 'undefined' && process.env) {
+      // @ts-ignore
+      return process.env.API_KEY;
+    }
+  } catch (e) {
+    // ignore errors in environments where process is not defined
+  }
+  return undefined;
+};
+
 const getClient = () => {
   if (!genAI) {
-    const apiKey = process.env.API_KEY;
+    const apiKey = getApiKey();
     if (!apiKey) {
       console.warn("API_KEY is missing. AI features will respond with a placeholder.");
       return null;
