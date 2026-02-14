@@ -1,4 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+// Interactive Counter Component
+const AnimatedCounter = () => {
+  const [count, setCount] = useState(500);
+  const ref = useRef<HTMLSpanElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const end = 589;
+    const start = 500;
+    const duration = 2500;
+    let startTime: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Easing: easeOutExpo for smooth deceleration
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      
+      setCount(Math.floor(start + (end - start) * ease));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isVisible]);
+
+  return <span ref={ref} className="tabular-nums inline-block">{count}</span>;
+};
 
 const credentials = [
   { 
@@ -18,7 +69,7 @@ const credentials = [
     icon: "💼" 
   },
   { 
-    label: "500+ Clients", 
+    label: <><AnimatedCounter />+ Clients</>, 
     sub: "Successful Placements", 
     icon: "🚀" 
   }
@@ -43,7 +94,7 @@ export const TrustBar: React.FC = () => {
                    title="Verify Credential on Credly"
                 >
                   {item.image ? (
-                    <img src={item.image} alt={item.label} className="w-full h-full object-contain" />
+                    <img src={item.image} alt={typeof item.label === 'string' ? item.label : 'Credential'} className="w-full h-full object-contain" />
                   ) : (
                     item.icon
                   )}
@@ -51,7 +102,7 @@ export const TrustBar: React.FC = () => {
               ) : (
                 <div className="w-12 h-12 rounded-full bg-brand-navy border border-white/10 flex items-center justify-center text-xl group-hover:scale-110 group-hover:border-brand-gold/50 transition-all duration-300 shadow-lg overflow-hidden p-0.5">
                     {item.image ? (
-                      <img src={item.image} alt={item.label} className="w-full h-full object-contain" />
+                      <img src={item.image} alt={typeof item.label === 'string' ? item.label : 'Credential'} className="w-full h-full object-contain" />
                     ) : (
                       item.icon
                     )}

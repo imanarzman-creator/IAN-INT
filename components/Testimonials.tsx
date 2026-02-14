@@ -41,51 +41,92 @@ const GoogleLogo = () => (
 
 export const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="bg-brand-navy border-b border-white/5 scroll-mt-28">
-      <div className="container mx-auto px-6 py-24">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-          <div>
-             <div className="flex items-center gap-2 mb-4 text-brand-text-muted bg-white/5 w-fit px-3 py-1 rounded-full border border-white/10">
-                 <GoogleLogo />
-                 <span className="text-xs font-mono uppercase tracking-wider font-bold">Verified Reviews</span>
-             </div>
-             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">Client Success</h2>
-          </div>
-          <a 
-            href={GOOGLE_REVIEW_LINK} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group flex items-center gap-2 text-brand-text-muted hover:text-brand-gold transition-colors text-sm font-mono tracking-widest uppercase"
-          >
-            <span className="border-b border-transparent group-hover:border-brand-gold pb-0.5">Read all reviews</span>
-            <span>→</span>
-          </a>
-        </div>
+    <section id="testimonials" className="bg-brand-navy border-b border-white/5 scroll-mt-28 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute -left-20 top-40 w-64 h-64 bg-brand-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div key={t.id} className="bg-brand-navy-light p-8 rounded-2xl border border-white/5 hover:border-brand-gold/30 hover:shadow-lg transition-all duration-300 flex flex-col group h-full">
-              <div className="mb-8 flex-1">
-                <div className="flex gap-1 mb-6 opacity-60 group-hover:opacity-100 transition-opacity">
-                    {[1,2,3,4,5].map(i => (
-                        <svg key={i} className="w-4 h-4 text-brand-gold fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+      <div className="container mx-auto px-6 py-24 relative z-10">
+        
+        {/* Header Section */}
+        <div className="grid md:grid-cols-2 gap-12 items-end mb-20">
+          
+          {/* Left: Title & Badge */}
+          <div>
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-mono uppercase tracking-widest mb-6">
+                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
+                 Proven Results
+             </div>
+             <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
+               Don't just take <br/>
+               <span className="text-brand-text-muted italic">my word for it.</span>
+             </h2>
+          </div>
+
+          {/* Right: Social Proof Stats */}
+          <div className="flex flex-col items-start md:items-end gap-6">
+            <div className="flex items-center gap-4 bg-brand-navy-light/50 border border-white/5 p-2 pr-6 rounded-full backdrop-blur-sm">
+                <div className="flex -space-x-4">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className={`w-12 h-12 rounded-full border-2 border-brand-navy overflow-hidden bg-brand-navy`}>
+                        <img 
+                          src={`https://ui-avatars.com/api/?name=Client+${i}&background=random&color=fff`} 
+                          className="w-full h-full object-cover opacity-80"
+                          alt={`Client ${i}`}
+                        />
+                      </div>
                     ))}
                 </div>
-                <p className="text-base text-white/80 leading-relaxed font-light">
-                  "{t.quote}"
-                </p>
-              </div>
+                <div className="flex flex-col">
+                    <span className="text-white font-bold text-lg leading-none">500+</span>
+                    <span className="text-brand-text-muted text-[10px] uppercase tracking-wider">Professionals Hired</span>
+                </div>
+            </div>
+            
+             <a 
+              href={GOOGLE_REVIEW_LINK} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-brand-text-muted hover:text-white transition-colors group"
+            >
+              <GoogleLogo />
+              <span className="text-sm font-mono uppercase tracking-widest">Read verified reviews</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t, idx) => (
+            <div key={t.id} className="group relative bg-[#0f1218] rounded-2xl p-8 border border-white/5 hover:border-brand-gold/30 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full shadow-lg">
               
-              <div className="flex items-center gap-4 pt-6 border-t border-white/5">
-                 <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full border border-white/10" />
+              {/* Quote Icon */}
+              <div className="absolute top-6 right-8 text-brand-gold/10 text-6xl font-serif font-bold group-hover:text-brand-gold/20 transition-colors">"</div>
+              
+              {/* Stars */}
+              <div className="flex gap-1 mb-6">
+                {[1,2,3,4,5].map(i => (
+                   <svg key={i} className="w-4 h-4 text-brand-gold fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                ))}
+              </div>
+
+              {/* Quote */}
+              <blockquote className="flex-1 text-brand-text-muted text-base leading-relaxed font-light mb-8 group-hover:text-white transition-colors relative z-10">
+                {t.quote}
+              </blockquote>
+
+              {/* Author */}
+              <div className="flex items-center gap-4 pt-6 border-t border-white/5 mt-auto">
+                 <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full border border-white/10 group-hover:border-brand-gold transition-colors" />
                  <div>
-                    <h4 className="font-bold text-sm text-white">{t.name}</h4>
+                    <h4 className="font-bold text-white text-sm">{t.name}</h4>
                     <p className="text-[10px] text-brand-text-muted font-mono uppercase tracking-wider">{t.company}</p>
                  </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
