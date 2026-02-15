@@ -12,6 +12,7 @@ import { CorporateTraining } from './components/CorporateTraining';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { LiveActivity } from './components/LiveActivity';
+import { BackgroundMusic } from './components/BackgroundMusic';
 
 export const App: React.FC = () => {
   useEffect(() => {
@@ -54,6 +55,7 @@ export const App: React.FC = () => {
       <Footer />
       <WhatsAppButton />
       <LiveActivity />
+      <BackgroundMusic />
     </div>
   );
 };
