@@ -6,7 +6,7 @@ import { TrustBar } from './components/TrustBar';
 import { About } from './components/About';
 import { AICoach } from './components/AICoach';
 import { Services } from './components/Services';
-import { Testimonials } from './components/Testimonials';
+import { TestimonialMarquee } from './components/TestimonialMarquee';
 import { BookLeadMagnet } from './components/BookLeadMagnet';
 import { CorporateTraining } from './components/CorporateTraining';
 import { Footer } from './components/Footer';
@@ -29,7 +29,7 @@ export const App: React.FC = () => {
         <About />
         <AICoach />
         <Services />
-        <Testimonials />
+        <TestimonialMarquee />
         <BookLeadMagnet />
         
         {/* Final CTA Section - Authority Driven */}
