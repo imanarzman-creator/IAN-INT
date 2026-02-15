@@ -8,6 +8,7 @@ import { AICoach } from './components/AICoach';
 import { Services } from './components/Services';
 import { TestimonialMarquee } from './components/TestimonialMarquee';
 import { BookLeadMagnet } from './components/BookLeadMagnet';
+import { DoubleAgentProtocol } from './components/DoubleAgentProtocol';
 import { CorporateTraining } from './components/CorporateTraining';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
@@ -32,6 +33,7 @@ export const App: React.FC = () => {
         <Services />
         <TestimonialMarquee />
         <BookLeadMagnet />
+        <DoubleAgentProtocol />
         
         {/* Final CTA Section - Authority Driven */}
         <section className="py-32 px-6 text-center border-t border-white/5 bg-brand-navy relative overflow-hidden">
