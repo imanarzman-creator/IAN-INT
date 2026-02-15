@@ -112,7 +112,13 @@ export const TestimonialMarquee: React.FC = () => {
          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-gold/5 rounded-full blur-[100px]"></div>
       </div>
 
-      <div className="container mx-auto px-6 mb-16 relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="container mx-auto px-6 mb-16 relative z-10"
+      >
         <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-gold/20 bg-brand-gold/5 text-brand-gold text-xs font-mono uppercase tracking-widest mb-6">
                  <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span>
@@ -134,7 +140,7 @@ export const TestimonialMarquee: React.FC = () => {
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
         </div>
-      </div>
+      </motion.div>
 
       {/* Marquee Container */}
       <div className="relative z-10 w-full overflow-hidden space-y-8">
