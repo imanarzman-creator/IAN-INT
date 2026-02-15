@@ -1,6 +1,8 @@
 import React from 'react';
 
 export const Footer: React.FC = () => {
+  const youtubeUrl = "https://youtube.com/playlist?list=PLBNRovsYzZjRCAuN25Zj4OqA-YDXRtSJD&si=bTeFFKYi3b2Q8GfD";
+
   return (
     <footer className="bg-brand-navy border-t border-white/5 py-20">
       <div className="container mx-auto px-6">
@@ -29,6 +31,7 @@ export const Footer: React.FC = () => {
             <h4 className="text-white font-bold mb-6">Connect</h4>
             <ul className="space-y-4 text-sm text-brand-text-muted">
               <li><a href="https://www.linkedin.com/in/iman-arzman/" target="_blank" rel="noreferrer" className="hover:text-brand-gold transition-colors">LinkedIn</a></li>
+              <li><a href={youtubeUrl} target="_blank" rel="noreferrer" className="hover:text-brand-gold transition-colors">YouTube</a></li>
               <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-brand-gold transition-colors">Instagram</a></li>
               <li><a href="https://tiktok.com" target="_blank" rel="noreferrer" className="hover:text-brand-gold transition-colors">TikTok</a></li>
               <li><a href="mailto:imanarzman@gmail.com" className="hover:text-brand-gold transition-colors">Email</a></li>

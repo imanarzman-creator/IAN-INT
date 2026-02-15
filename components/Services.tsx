@@ -12,7 +12,8 @@ export const Services: React.FC = () => {
     mockInterview: 'https://cal.com/iman-arzman-gcqwj7/mock-interview-simulation-30-mins',
     careerRoadmap: 'https://cal.com/iman-arzman-gcqwj7/career-strategy-consultation',
     b2bConsult: 'mailto:imanarzman@gmail.com?subject=Corporate%20Consultancy%20Inquiry',
-    circle100: 'https://forms.gle/QyR7csTf13ZRVT4y8'
+    circle100: 'https://forms.gle/QyR7csTf13ZRVT4y8',
+    youtubePlaylist: 'https://youtube.com/playlist?list=PLBNRovsYzZjRCAuN25Zj4OqA-YDXRtSJD&si=bTeFFKYi3b2Q8GfD'
   };
 
   const openLink = (url: string) => window.open(url, '_blank');
@@ -38,7 +39,7 @@ export const Services: React.FC = () => {
         </div>
 
         {/* --- PART 1: INDIVIDUAL SERVICES (B2C) --- */}
-        <div className="mb-24">
+        <div className="mb-16">
             <div className="flex items-center gap-4 mb-10">
                 <h4 className="text-white font-bold text-2xl font-serif">For Individuals</h4>
                 <div className="h-px bg-white/10 flex-1"></div>
@@ -172,7 +173,38 @@ export const Services: React.FC = () => {
             </div>
         </div>
 
-        {/* --- PART 2: CORPORATE SERVICES (B2B) --- */}
+        {/* --- PART 2: FREE RESOURCES --- */}
+        <div className="mb-24">
+            <div className="flex items-center gap-4 mb-10">
+                <h4 className="text-white font-bold text-2xl font-serif">Free Resources</h4>
+                <div className="h-px bg-white/10 flex-1"></div>
+            </div>
+            
+            <div 
+                onClick={() => openLink(links.youtubePlaylist)}
+                className="group relative bg-brand-navy-light border border-white/5 p-8 rounded-2xl overflow-hidden cursor-pointer hover:border-red-500/50 transition-all duration-300"
+            >
+                 {/* Decorative Background */}
+                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-red-500/20 transition-colors"></div>
+
+                 <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                    <div className="w-16 h-16 bg-[#FF0000] rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <svg className="w-8 h-8 text-white fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div className="text-center md:text-left">
+                        <h5 className="text-2xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">Career Consultation Videos</h5>
+                        <p className="text-brand-text-muted text-sm max-w-xl">
+                            Watch recorded sessions and deep dives on my YouTube channel. Learn from real case studies, salary negotiation breakdowns, and interview reviews.
+                        </p>
+                    </div>
+                    <div className="md:ml-auto">
+                        <span className="text-white font-bold text-sm uppercase tracking-widest border-b border-red-500 pb-1 group-hover:text-red-400 transition-colors">Watch Playlist →</span>
+                    </div>
+                 </div>
+            </div>
+        </div>
+
+        {/* --- PART 3: CORPORATE SERVICES (B2B) --- */}
         <div>
             <div className="flex items-center gap-4 mb-10">
                 <h4 className="text-white font-bold text-2xl font-serif">For Organizations</h4>
