@@ -8,11 +8,11 @@ export const Services: React.FC = () => {
 
   // Links
   const links = {
-    bedahResume: 'https://forms.gle/jALhB4Aqb1pfVepK8',
-    mockInterview: 'https://cal.com/iman-arzman-gcqwj7/mock-interview-simulation-30-mins',
-    careerRoadmap: 'https://cal.com/iman-arzman-gcqwj7/career-strategy-consultation',
+    bedahResume: 'https://ianintelligence.bcl.my/form/resume-review',
+    mockInterview: 'https://ianintelligence.bcl.my/form/mock-interview',
+    careerRoadmap: 'https://ianintelligence.bcl.my/form/career-strategy',
     b2bConsult: 'mailto:imanarzman@gmail.com?subject=Corporate%20Consultancy%20Inquiry',
-    circle100: 'https://forms.gle/QyR7csTf13ZRVT4y8',
+    circle100: 'https://ianintelligence.bcl.my/form/circle-100-promo',
     youtubePlaylist: 'https://youtube.com/playlist?list=PLBNRovsYzZjRCAuN25Zj4OqA-YDXRtSJD&si=bTeFFKYi3b2Q8GfD'
   };
 

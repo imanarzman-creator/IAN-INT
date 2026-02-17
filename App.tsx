@@ -44,7 +44,7 @@ export const App: React.FC = () => {
                Don't leave your career to chance. Leverage 15 years of HR expertise to position yourself exactly where you want to be.
              </p>
              <button 
-               onClick={() => window.open('https://cal.com/iman-arzman-gcqwj7/career-strategy-consultation', '_blank')}
+               onClick={() => window.open('https://ianintelligence.bcl.my/form/career-strategy', '_blank')}
                className="px-12 py-5 bg-brand-gold text-brand-navy font-bold text-lg hover:scale-105 transform transition-all duration-300 shadow-xl rounded-full"
              >
                Start Your Strategy Call

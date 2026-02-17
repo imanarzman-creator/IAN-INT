@@ -14,8 +14,8 @@ export const Navigation: React.FC = () => {
   }, []);
 
   const handleStrategyCall = () => {
-    // Points to Career Strategy Consultation on Cal.com
-    window.open('https://cal.com/iman-arzman-gcqwj7/career-strategy-consultation', '_blank');
+    // Points to Career Strategy Consultation form
+    window.open('https://ianintelligence.bcl.my/form/career-strategy', '_blank');
     setMobileMenuOpen(false);
   };
 

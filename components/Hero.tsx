@@ -78,7 +78,7 @@ export const Hero: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
-                onClick={() => window.open('https://forms.gle/jALhB4Aqb1pfVepK8', '_blank')}
+                onClick={() => window.open('https://ianintelligence.bcl.my/form/resume-review', '_blank')}
                 className="px-8 py-4 text-base"
               >
                 Book Bedah Resume
